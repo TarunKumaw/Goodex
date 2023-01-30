@@ -1,0 +1,79 @@
+
+.download_policy {
+    position: absolute;
+    float: inherit !important;
+    padding: 5px 24px;
+    background: #d62831;
+    margin: 0;
+    color: white;
+    border: 0;
+    border-radius: 100px 0px 0px 100px;
+    right: -1px;
+    top: 0;
+}
+
+.payment_page_css .payment_block {
+    display: block;
+    overflow: inherit;
+    padding: 40px 10px 10px 10px;
+    position: relative;
+    background: #fff;
+    box-shadow: 0px 0px 10px 0px #c2c2c2;
+    border-radius: 5px;
+}
+
+.payment_page_css .payment_block li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    padding: 8px 5px;
+    min-width: 100%;
+    box-shadow: none;
+    border-bottom: 1px dashed #d6d6d6;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.payment_page_css .payment_block li:last-child{
+    border: none;
+    padding: 0;
+}
+
+.payment_page_css .payment_block li span .svg-inline--fa {
+    padding-right: 10px;
+    font-size: 15px;
+}
+
+.payment_page_css .payment_block li:nth-child(1) span .svg-inline--fa {
+    color: #585858;
+}
+
+.payment_page_css .payment_block li:nth-child(2) span .svg-inline--fa {
+    color: #95472a;
+}
+
+.payment_page_css .payment_block li:nth-child(3) span .svg-inline--fa {
+    color: #ffb100;
+}
+
+.payment_page_css .payment_block li:nth-child(4) span .svg-inline--fa {
+    color: #7a5721;
+}
+
+.payment_page_css .payment_block li:nth-child(5) span .svg-inline--fa {
+    color: #007eff;
+}
+
+.payment_page_css .payment_block li:nth-child(6) span .svg-inline--fa {
+    color: #2cb71c;
+}
+
+.payment_page_css .payment_block li:nth-child(7) span .svg-inline--fa {
+    color: #1388a3;
+}
+
+.payment_page_css .payment_block li label {
+    font-weight: 700;
+    color: #d62831;
+}

@@ -1,0 +1,17 @@
+<?php
+
+
+
+if($this->input->post('q36')=="Yes"){
+			$this->form_validation->set_rules('q36a','A','required',array('required' => '%s is required..!'));
+			$this->form_validation->set_rules('q36b','B','required',array('required' => '%s is required..!'));
+			$this->form_validation->set_rules('q36c','C','required',array('required' => '%s is required..!'));
+			$this->form_validation->set_rules('q36d','D','required',array('required' => '%s is required..!'));
+			$this->form_validation->set_rules('q36a','E','required',array('required' => '%s is required..!'));
+			$this->form_validation->set_rules('q36b','F','required',array('required' => '%s is required..!'));
+			$this->form_validation->set_rules('q36c','G','required',array('required' => '%s is required..!'));
+			$this->form_validation->set_rules('q36d','H','required',array('required' => '%s is required..!'));
+		}
+
+
+		,'q36'=>$this->input->post('q36'),'q36a'=>$this->input->post('q36a'),'q36b'=>$this->input->post('q36b'),'q36c'=>$this->input->post('q36c'),'q36d'=>$this->input->post('q36d'),'q36e'=>$this->input->post('q36e'),'q36f'=>$this->input->post('q36f'),'q36g'=>$this->input->post('q36g'),'q36h'=>$this->input->post('q36h')

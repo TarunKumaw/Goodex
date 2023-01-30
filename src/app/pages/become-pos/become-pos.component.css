@@ -1,0 +1,32 @@
+.become_banner {
+    position: relative;
+    z-index: 0;
+}
+
+.become_banner .img_box_ani img {
+    -webkit-animation-name: jum_animation;
+    animation-name: jum_animation;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+.faq_blocks .accordion .accordion-header button,
+.faq_blocks .accordion .accordion-header button:focus {
+    outline: none;
+    box-shadow: none;
+    color: #363636;
+}
+
+.faq_blocks .accordion .accordion-header .accordion-button:not(.collapsed) {
+    color: #d73d32;
+}
+
+@media (max-width:575px) {
+    .become_banner .img_box_ani {
+        margin-bottom: 40px;
+    }
+}

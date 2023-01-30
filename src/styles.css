@@ -1,0 +1,62 @@
+/* You can add global styles to #318ebais file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import "assets/Multiselect.css"; */
+@import "assets/css/bootstrap.min.css";
+@import "assets/css/jquery_ui.css";
+@import "assets/css/custom_select_css.css";
+@import "assets/css/main.css";
+ /* @import "~@ng-select/ng-select/themes/default.theme.css"; */
+/* body {
+  padding: 20px;
+} *  */
+/* @import "assets/css/all.min.css"; */
+/* @import "assets/css/brands.min.css"; */
+/* @import "assets/css/solid.min.css"; */
+/* @import "assets/css/regular.min.css"; */
+/* You can add global styles to this file, and also import other style files */
+
+.ValidationError.ng-star-inserted {
+    color: red;
+}
+ 
+.form_group .cs_custom_drop .ng-dropdown-panel .scroll-host {
+    overflow: hidden;
+    overflow-y: auto;
+    position: relative;
+    display: block;
+    z-index: 99999;
+    background: #fff;
+    border: 1px solid #ddd;
+    left: -8px;
+    top: 4px;
+    border-radius: 5px;
+}
+
+.form_group .cs_custom_drop .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    padding: 5px 10px;
+    margin: 0px !important;
+    font-size: 12px;
+    color: #d62831;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.form_group .cs_custom_drop .ng-dropdown-panel .ng-dropdown-panel-items .ng-option:hover {
+    color: #d62831;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #d62831;
+}
+
+.form_group .form_control.cs_custom_drop {
+    padding: 5px 8px !important;
+}
+
+.form_group .form_control.cs_custom_drop .ng-input input:focus {
+    outline: none !important;
+    border: none !important;
+}
+ 
+span.ng-clear-wrapper.ng-star-inserted {
+    display: none !important;
+}

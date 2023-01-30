@@ -1,0 +1,1057 @@
+<section class="main_carbike_page">
+    <div class="container-fluid border_gary mb_15 pt_7">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-6">
+                <div class="fs_12 fw_700 text_red">Edit Vehicle Details</div>
+                <div class="form_group d_flex flex_Equal flex_Middel">
+                    <input type="text" name="text"
+                        value="{{dataArValue.make}} {{dataArValue.model}} {{dataArValue.fuel_type}} {{dataArValue.variant}} "
+                        placeholder="HONDA ACCORD 2008 2.4 ELEGANCE" class="form_control">
+                    <button type="button" class="edit_btn edit_vehical_details" (click)="ShowLoginPoupup()"><i
+                            class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+                <form class="ngSubmit" [formGroup]="updateRegistrationRTO" (ngSubmit)="UpdateData()">
+                    <div class="fs_12 fw_700 text_red">Registered Rto</div>
+                    <div class="form_group d_flex flex_Equal flex_Middel">
+
+
+                        <ng-select formControlName="registration_no"  (keyup)="GetRto($event)" 
+                        class="form_control moter_custom_select cs_custom_drop" maxlength="4">
+                        <ng-option *ngFor="let car of SelectRto" [value]="car.Id">{{car.Name}} </ng-option>
+                      </ng-select>
+
+
+                        <button type="submit" class="edit_btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-6">
+                <form class="ngSubmit" [formGroup]="updatePurchaseDate" (ngSubmit)="UpdateData()">
+                    <div class="fs_12 fw_700 text_red">Purchase Date</div>
+                    <div class="form_group d_flex flex_Equal flex_Middel">
+                        <input type="date" placeholder="dd/mm/yy" formControlName="purchase_date" value="{{dataArValue.purchase_date}}" class="form_control  ">
+                        <button type="submit" class="edit_btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-6">
+                <form class="ngSubmit" [formGroup]="updateRegistrationDate" (ngSubmit)="UpdateData()">
+                    <div class="fs_12 fw_700 text_red">Registration Date</div>
+                    <div class="form_group d_flex flex_Equal flex_Middel">
+                        <input type="date" placeholder="dd/mm/yy" formControlName="registration_date"
+                            class="form_control  ">
+                        <button type="submit" class="edit_btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p_0 d_flex">
+        <div class="sidebar" id="sidebar_mobile">
+            <div class="sidebar_header">
+                <div class="fs_14 fw_700 text_white"> {{dataArValue.quotation_id}}</div>
+            </div>
+            <form class="ngSubmit" [formGroup]="updateForm" (ngSubmit)="UpdateData()">
+                <div class="sidebar_body">
+                    <div class="cs_card px_10">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">PLAN TYPE?</div>
+                        <div class="cs_card_body">
+                            <div class="custom_radio_btns">
+                                <input type="radio" formControlName="tp_only" id="plantype1" value="0"
+                                    [checked]="dataArValue.tp_only==0" (click)="UpdateDataTpOnly('0')">
+                                <label for="plantype1">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>Comprehensive/Standard</small>
+                                </label>
+                            </div>
+                            <div class="custom_radio_btns">
+                                <input type="radio" formControlName="tp_only" id="plantype2" value="1"
+                                    [checked]="dataArValue.tp_only==1" (click)="UpdateDataTpOnly('1')">
+                                <label for="plantype2">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>Third Party Only</small>
+                                </label>
+                            </div>
+                            <div class="custom_radio_btns">
+                                <input type="radio" formControlName="tp_only" id="plantype3" value="2"
+                                    class="open_popup_form" [checked]="dataArValue.tp_only==2">
+                                <label for="plantype3" (click)="ownDamagePoupup()">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>Standalone OD Only</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs_card px_10">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">POLICY EXPIRY DATE?</div>
+                        <div class="cs_card_body">
+                            <div class="form_group">
+                                <input type="date" formControlName="policy_expiery_date" class="  form_control"
+                                    placeholder="dd/mm/yy" value="dataArValue.policy_expiery_date">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs_card px_10">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">VEHICLE OWNED BY?</div>
+                        <div class="cs_card_body d_flex flex_Equal">
+                            <div class="custom_radio_btns">
+                                <input type="radio" id="owned1" formControlName="vehicle_owned_by" value="Individual"
+                                    [checked]="dataArValue.vehicle_owned_by=='Individual'">
+                                <label for="owned1">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>Individual</small>
+                                </label>
+                            </div>
+                            <div class="custom_radio_btns">
+                                <input type="radio" id="owned2" formControlName="vehicle_owned_by" value="Organization"
+                                    [checked]="dataArValue.vehicle_owned_by=='Organization'">
+                                <label for="owned2">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>Organization</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs_card px_10">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">ZERO DEPRECIATION PREVIOUS POLICY?</div>
+                        <div class="cs_card_body d_flex flex_Equal">
+                            <div class="custom_radio_btns">
+                                <input type="radio" id="ZERO1" formControlName="zero_dept_expiring_policy" value="1"
+                                    [checked]="dataArValue.zero_dept_expiring_policy==1">
+                                <label for="ZERO1">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>Yes</small>
+                                </label>
+                            </div>
+                            <div class="custom_radio_btns">
+                                <input type="radio" id="ZERO2" formControlName="zero_dept_expiring_policy" value="0"
+                                    [checked]="dataArValue.zero_dept_expiring_policy==0">
+                                <label for="ZERO2">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>No</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs_card px_10">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">CLAIM MADE IN EXPIRING POLICY?</div>
+                        <div class="cs_card_body d_flex flex_Equal">
+                            <div class="custom_radio_btns">
+                                <input type="radio" id="CLAIMMADE1" formControlName="claim_expiring_policy" value="1"
+                                    onclick="Js_Yes_on();" [checked]="dataArValue.claim_expiring_policy==1">
+                                <label for="CLAIMMADE1">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>Yes</small>
+                                </label>
+                            </div>
+                            <div class="custom_radio_btns">
+                                <input type="radio" id="CLAIMMADE2" formControlName="claim_expiring_policy" value="0"
+                                    onclick="Js_No_on();" [checked]="dataArValue.claim_expiring_policy==0">
+                                <label for="CLAIMMADE2">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>No</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs_card px_10" id="show_hide">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">PREVIOUS NCB?</div>
+                        <div class="cs_card_body pb_10">
+                            <div class=" d_flex flex_Equal flex_wrap">
+                                <div class="custom_radio_btns">
+                                    <input type="radio" id="PREVIOUSNCB1" formControlName="ncb_old"
+                                        [checked]="dataArValue.ncb_old==0" value="0" checked>
+                                    <label for="PREVIOUSNCB1">
+                                        <span><i class="fa-solid fa-check check_icon"></i></span>
+                                        <small>0%</small>
+                                    </label>
+                                </div>
+                                <div class="custom_radio_btns">
+                                    <input type="radio" id="PREVIOUSNCB2" value="20" formControlName="ncb_old"
+                                        [checked]="dataArValue.ncb_old==20">
+                                    <label for="PREVIOUSNCB2">
+                                        <span><i class="fa-solid fa-check check_icon"></i></span>
+                                        <small>20%</small>
+                                    </label>
+                                </div>
+                                <div class="custom_radio_btns">
+                                    <input type="radio" id="PREVIOUSNCB3" value="25" formControlName="ncb_old"
+                                        [checked]="dataArValue.ncb_old==25">
+                                    <label for="PREVIOUSNCB3">
+                                        <span><i class="fa-solid fa-check check_icon"></i></span>
+                                        <small>25%</small>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class=" d_flex flex_Equal flex_wrap">
+                                <div class="custom_radio_btns">
+                                    <input type="radio" id="PREVIOUSNCB4" value="35" formControlName="ncb_old"
+                                        [checked]="dataArValue.ncb_old==35">
+                                    <label for="PREVIOUSNCB4">
+                                        <span><i class="fa-solid fa-check check_icon"></i></span>
+                                        <small>35%</small>
+                                    </label>
+                                </div>
+                                <div class="custom_radio_btns">
+                                    <input type="radio" id="PREVIOUSNCB5" value="45" formControlName="ncb_old"
+                                        [checked]="dataArValue.ncb_old==45">
+                                    <label for="PREVIOUSNCB5">
+                                        <span><i class="fa-solid fa-check check_icon"></i></span>
+                                        <small>45%</small>
+                                    </label>
+                                </div>
+                                <div class="custom_radio_btns">
+                                    <input type="radio" id="PREVIOUSNCB6" value="50" formControlName="ncb_old"
+                                        [checked]="dataArValue.ncb_old==50">
+                                    <label for="PREVIOUSNCB6">
+                                        <span><i class="fa-solid fa-check check_icon"></i></span>
+                                        <small>50%</small>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs_card px_10">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">DISCOUNT</div>
+                        <div class="cs_card_body ">
+                            <div class="custom_radio_btns_checks">
+                                <input type="checkbox" id="restricted1" name="restricted" value="1"
+                                    formControlName="anti_theft_device" [checked]="dataArValue.anti_theft_device==1">
+                                <label for="restricted1">Anti-Theft Device?</label>
+                            </div>
+                            <div class="custom_radio_btns_checks">
+                                <input type="checkbox" id="restricted2" name="restricted" value="1"
+                                    formControlName="tppd_restricted_to" [checked]="dataArValue.tppd_restricted_to==1">
+                                <label for="restricted2">TPPD restricted to 6000?</label>
+                            </div>
+                            <div class="more_options" *ngIf="isShowDiv">
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="restricted3" name="restricted" value="1"
+                                        formControlName="vehicle_modified_for_handicap"
+                                        [checked]="dataArValue.vehicle_modified_for_handicap==1">
+                                    <label for="restricted3">Vehicle Modified For Handicap?</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="restricted4" value="1" formControlName="voluntary_excess"
+                                        (click)="toggleDisplayvoluntary()" [checked]="dataArValue.voluntary_excess==1">
+                                    <label for="restricted4">Voluntary Excess?</label>
+                                    <div class="form_group mt_15" id="sum_insured"
+                                        *ngIf="dataArValue.voluntary_excess == 1 || isShowDivVoluntary">
+                                        <select id="voluntary_excess_value" class="form_control moter_custom_select"
+                                            formControlName="voluntary_excess_value">
+                                            <option value="" disabled="" selected="">Select Sum Insured</option>
+                                            <option value="2500" [selected]="dataArValue.voluntary_excess_value==2500">
+                                                2500</option>
+                                            <option value="5000" [selected]="dataArValue.voluntary_excess_value==5000">
+                                                5000</option>
+                                            <option value="7500" [selected]="dataArValue.voluntary_excess_value==7500">
+                                                7500</option>
+                                            <option value="15000"
+                                                [selected]="dataArValue.voluntary_excess_value==15000">15000</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="restricted5" name="restricted" value="1"
+                                        formControlName="member_of_aai" [checked]="dataArValue.member_of_aai==1">
+                                    <label for="restricted5">Member of AAI?</label>
+                                    <div class="form_group mt_15" id="sum_insured_new" style="display:none;">
+                                        <div class="d_flex flex_Equal flex_Middel">
+                                            <input type="text" name="text" placeholder="0" value="0"
+                                                class="form_control mr_10">
+                                            <input type="text" name="text" placeholder="0" value="0"
+                                                class="form_control mr_10">
+                                            <input type="text" name="text" placeholder="dd/mm/yy"
+                                                class="form_control datepicker">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide_btn" (click)="toggleDisplayDiv()"><button type="button"
+                                    id="slide_option">More Option&nbsp;&nbsp;<i
+                                        class="fa-solid fa-chevron-down"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="cs_card px_10">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">ADDITIONAL COVER</div>
+                        <div class="cs_card_body ">
+                            <div class="custom_radio_btns">
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="pacober1" name="pacober" value="1"
+                                        formControlName="pa_cover" [checked]="dataArValue.pa_cover==1">
+                                    <label for="pacober1">PA Cover for Owner Driver?</label>
+                                </div>
+                            </div>
+                            <div class="custom_radio_btns_checks">
+                                <input type="checkbox" id="restricted999" name="restricted" value="1"
+                                    formControlName="electrical_accessory"
+                                    [checked]="dataArValue.electrical_accessory==1">
+                                <label for="restricted999">Electrical Accessory?</label>
+                            </div>
+                            <div class="form_group count_box_hide" style="display: none;">
+                                <input type="text" name="text" value="{{dataArValue.electrical_accessory_value}}"
+                                    placeholder="0" class="form_control" formControlName="electrical_accessory_value">
+                            </div>
+                            <div class="more_options_new_2" *ngIf="isShowDivAdditional">
+                                <div>
+                                    <div class="custom_radio_btns_checks">
+                                        <input type="checkbox" id="Accessory1" name="Accessory" value="1"
+                                            formControlName="non_electrical_accessory"
+                                            [checked]="dataArValue.non_electrical_accessory==1">
+                                        <label for="Accessory1">Non-Electrical Accessory?</label>
+                                    </div>
+                                    <div class="form_group count_box_hide_2" style="display: none;">
+                                        <input type="text" name="text"
+                                            value="{{dataArValue.non_electrical_accessory_value}}" placeholder="0"
+                                            class="form_control" formControlName="non_electrical_accessory_value">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="custom_radio_btns_checks">
+                                        <input type="checkbox" id="Accessory2" name="Accessory" value="1"
+                                            formControlName="fule_kit" [checked]="dataArValue.fule_kit==1">
+                                        <label for="Accessory2">Is Bi-fuel Kit?</label>
+                                    </div>
+                                    <div class="form_group count_box_hide_3" style="display: none;">
+                                        <input type="text" name="text" formControlName="fule_kit_value"
+                                            value="{{dataArValue.fule_kit_value}}" placeholder="0" class="form_control">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="custom_radio_btns_checks">
+                                        <input type="checkbox" id="Accessory3" name="Accessory" value="1"
+                                            formControlName="pacoverfor_unnamed_person"
+                                            [checked]="dataArValue.pacoverfor_unnamed_person==1">
+                                        <label for="Accessory3">PA Cover for unnamed persons?</label>
+                                    </div>
+                                    <div class="form_group count_box_hide_4" style="display: none;">
+                                        <select id="voluntary_excess_value" class="form_control moter_custom_select"
+                                            formControlName="pacoverfor_unnamed_person_value">
+                                            <option value="" disabled="" selected="">Select Sum Insured</option>
+                                            <option value="10000">10,000</option>
+                                            <option value="20000">20,000</option>
+                                            <option value="30000">30,000</option>
+                                            <option value="40000">40,000</option>
+                                            <option value="50000">50,000</option>
+                                            <option value="60000">60,000</option>
+                                            <option value="70000">70,000</option>
+                                            <option value="80000">80,000</option>
+                                            <option value="90000">90,000</option>
+                                            <option value="100000">1,00,000</option>
+                                            <option value="110000">1,10,000</option>
+                                            <option value="120000">1,20,000</option>
+                                            <option value="130000">1,30,000</option>
+                                            <option value="140000">1,40,000</option>
+                                            <option value="150000">1,50,000</option>
+                                            <option value="160000">1,60,000</option>
+                                            <option value="170000">1,70,000</option>
+                                            <option value="180000">1,80,000</option>
+                                            <option value="190000">1,90,000</option>
+                                            <option value="200000">2,00,000</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="custom_radio_btns_checks">
+                                        <input type="checkbox" id="Accessory4" name="Accessory" value="1"
+                                            formControlName="legal_liability_employee"
+                                            [checked]="dataArValue.legal_liability_employee==1">
+                                        <label for="Accessory4">Legal liability of employee?</label>
+                                    </div>
+                                    <div class="form_group count_box_hide_5" style="display: none;">
+                                        <select id="voluntary_excess_value" class="form_control moter_custom_select"
+                                            formControlName="legal_liability_employee_value">
+                                            <option value="" disabled="" selected="">Select no Of Legal Liablity
+                                                Employee
+                                            </option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="custom_radio_btns_checks">
+                                        <input type="checkbox" id="Accessory5" name="Accessory" value="1"
+                                            formControlName="legal_liability_paid_driver"
+                                            [checked]="dataArValue.legal_liability_paid_driver==1">
+                                        <label for="Accessory5">Legal Liability to Paid Driver?</label>
+                                    </div>
+
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Accessory6" name="Accessory" value="1"
+                                        formControlName="fiber_glass_fuel_tank"
+                                        [checked]="dataArValue.fiber_glass_fuel_tank==1">
+                                    <label for="Accessory6">Fiber-Glass Fuel Tank?</label>
+                                </div>
+                            </div>
+                            <div class="slide_btn" (click)="toggleDisplayDivAdditional()"><button type="button"
+                                    id="slide_option_new2">More Option&nbsp;&nbsp;<i
+                                        class="fa-solid fa-chevron-down"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="cs_card px_10">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">ADDON COVER</div>
+                        <div class="cs_card_body">
+                            <div class="custom_radio_btns_checks">
+                                <input type="checkbox" id="Emergencycover1" name="Emergencycover"
+                                    formControlName="emergency_cover" value="1"
+                                    [checked]="dataArValue.emergency_cover==1     ">
+                                <label for="Emergencycover1">Emergency Cover</label>
+                            </div>
+                            <div class="custom_radio_btns_checks policy_zero_depreciation_checks">
+                                <input type="checkbox" id="Emergencycover2" name="Emergencycover" value="1"
+                                    formControlName="zero_dept" [checked]="dataArValue.zero_dept==1">
+                                <label for="Emergencycover2">Zero Depreciation Cover</label>
+                            </div>
+                            <div class="more_options_checks" *ngIf="isShowDivAddon">
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover3" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.consumables==1" formControlName="consumables">
+                                    <label for="Emergencycover3">Consumables</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover4" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.tyre_cover==1" formControlName="tyre_cover">
+                                    <label for="Emergencycover4">Tyre Cover</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover5" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.ncb_protection==1" formControlName="ncb_protection">
+                                    <label for="Emergencycover5">NCB Protection</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover6" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.engine_protector==1" formControlName="engine_protector">
+                                    <label for="Emergencycover6">Engine Protector</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover7" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.return_invoice==1" formControlName="return_invoice">
+                                    <label for="Emergencycover7">Return to Invoice</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover8" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.loss_of_key==1" formControlName="loss_of_key">
+                                    <label for="Emergencycover8">Loss of Key</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover9" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.road_side_assistance==1"
+                                        formControlName="road_side_assistance">
+                                    <label for="Emergencycover9">Road side Assistance</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover10" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.passenger_assist_cover==1"
+                                        formControlName="passenger_assist_cover">
+                                    <label for="Emergencycover10">Passenger Assist cover</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover11" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.loss_personal_belonging==1"
+                                        formControlName="loss_personal_belonging">
+                                    <label for="Emergencycover11">Loss Personal Belonging</label>
+                                </div>
+                                <div class="custom_radio_btns_checks">
+                                    <input type="checkbox" id="Emergencycover12" name="Emergencycover" value="1"
+                                        [checked]="dataArValue.hospital_cash_cover==1"
+                                        formControlName="hospital_cash_cover">
+                                    <label for="Emergencycover12">Hospital Cash Cover</label>
+                                </div>
+                            </div>
+                            <div class="slide_btn" (click)="toggleDisplayDivAddon()"><button type="button"
+                                    id="slide_option_checks">More Option&nbsp;&nbsp;<i
+                                        class="fa-solid fa-chevron-down"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="cs_card px_10">
+                        <div class="fs_13 fw_700 text_red py_5 border_bottom">PUC</div>
+                        <div class="cs_card_body d_flex flex_Equal">
+                            <div class="custom_radio_btns">
+                                <input type="radio" id="puc1" value="1" [checked]="dataArValue.puc==1"
+                                    formControlName="puc">
+                                <label for="puc1">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>Yes</small>
+                                </label>
+                            </div>
+                            <div class="custom_radio_btns">
+                                <input type="radio" id="puc2" value="0" [checked]="dataArValue.puc==0"
+                                    formControlName="puc">
+                                <label for="puc2">
+                                    <span><i class="fa-solid fa-check check_icon"></i></span>
+                                    <small>No</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar_footer">
+                    <button type="submit">Recalculate Quote</button>
+                </div>
+            </form>
+        </div>
+        <div class="main_body_content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d_flex flex_Equal flex_Middel px_10 py_5 background_red text_white mid_part_btns mb_15">
+                        <div>Insurer</div>
+                        <div>Premium</div>
+                        <select class="form_control moter_custom_select">
+                            <option value="ASC" selected="">ASC</option>
+                            <option value="DESC">DESC</option>
+                        </select>
+                        <button type="button"
+                            class="border_none fs_14 fw_600 background_none text_white Edit_IDV_edit">Update
+                            IDV</button>
+                    </div>
+                    <div class="quotes_list" *ngIf="post?.length != 0">
+                        <div *ngFor="let quoteResult of post; let i=index;"
+                            class="border_gary mb_15 px_10 py_5 quotes_list_body">
+                            <div class="quotes_list_box d_flex flex_Equal flex_Middel">
+                                <div class="fin_logo">
+                                    <img src="{{quoteResult.logo}}" alt="liberty">
+                                </div>
+                                <div>
+
+                                    <div class="fs_15 text_red fw_800">{{quoteResult.company}}</div>
+                                    <div class="fs_13 text_dark fw_600"> {{quoteResult.policy_type}}</div>
+                                    <div class="fs_13 text_dark fw_600" *ngIf="(quoteResult.v_data.tp_only !=1)">IDV :
+                                        {{quoteResult.idv}}</div>
+                                    <!-- *ngIf="(quoteResult.v_data.tp_only !=1 || quoteResult.v_data.dont_know == 1 || quoteResult.ncb != 0 || 0 > quoteResult.ncb)" -->
+                                    <div class="fs_13 text_dark fw_600" *ngIf="quoteResult.ncb > 0">NCB :
+                                        {{quoteResult.v_data.curr_ncb}}%</div>
+                                    <div class="fs_13 text_dark fw_600" *ngIf="(quoteResult.v_data.tp_only !=1)">
+                                        IDV:{{quoteResult.idv_min}} - {{quoteResult.idv_max}}</div>
+                                </div>
+                                <div>
+                                    <div class="fs_13 text_dark fw_600">Rs. {{quoteResult.net}}</div>
+                                    <div class="fs_13 text_dark fw_600">*Excluding GST</div>
+                                    <div class="fs_13 text_dark fw_600">{{quoteResult.tenure}}</div>
+                                </div>
+                                <div class="d_flex flex_column flex_End flex_Middel text_right col_btns">
+                                    <button type="button" class="buy_now_btn buy_now_btn_popup"
+                                        (click)="UpdateDetails(quoteResult.pa,quoteResult.company,dataArValue.quotation_id,quoteResult.od,quoteResult.tp,quoteResult.total_premium,quoteResult.end_date,quoteResult.idv,quoteResult.tenuerr,quoteResult.net,quoteResult.gst,quoteResult.start_date,dataArVal.other_tp,dataArVal.tppd)">Buy
+                                        Now</button>
+                                    <a (click)="PremiumBreckup(i)" class="buy_now_btn Premium_Breakup_popup">Premium
+                                        Breakup</a>
+                                </div>
+                            </div>
+                            <div class="pt_7 border_top_gray1">
+                                <ul class="d_flex flex_Equal flex_Middel li_width flex_wrap"
+                                    *ngIf="(quoteResult.v_data.tp_only !=1)">
+
+                                    <li *ngIf="quoteResult.v_data.zero_dept ==1">Zero Depreciation :
+                                        {{quoteResult.zero_dept > 0 ? quoteResult.zero_dept : 'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.consumables ==1">Consumables :
+                                        {{quoteResult.consumables > 0 ? quoteResult.consumables : 'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.tyre_cover ==1">Tyre : {{quoteResult.tyre_cover > 0 ?
+                                        quoteResult.tyre_cover : 'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.ncb_protection ==1">NCB Protection :
+                                        {{quoteResult.ncb_protection > 0 ? 'quoteResult.ncb_protection' : 'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.engine_protector ==1">Engine Protector :
+                                        {{quoteResult.engine_protector > 0 ? quoteResult.engine_protector : 'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.return_invoice ==1">Return to Invoice :
+                                        {{quoteResult.return_invoice > 0 ? quoteResult.return_invoice : 'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.loss_of_key ==1">Loss of Key :
+                                        {{quoteResult.loss_of_key > 0 ? quoteResult.loss_of_key : 'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.road_side_assistance ==1">Road side Assistance :
+                                        {{quoteResult.road_side_assistance > 0 ? quoteResult.road_side_assistance :
+                                        'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.passenger_assist_cover ==1">Passenger Assist :
+                                        {{quoteResult.passenger_assist_cover > 0 ? quoteResult.passenger_assist_cover :
+                                        'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.hospital_cash_cover ==1">Hospital Cash :
+                                        {{quoteResult.hospital_cash_cover > 0 ? quoteResult.hospital_cash_cover : 'X'}}
+                                    </li>
+                                    <li *ngIf="quoteResult.v_data.emergency_cover ==1">Emergency :
+                                        {{quoteResult.emergency_cover > 0 ? quoteResult.emergency_cover : 'X'}}</li>
+                                    <li *ngIf="quoteResult.v_data.loss_personal_belonging ==1">Loss personal belonging :
+                                        {{quoteResult.loss_personal_belonging > 0 ? quoteResult.loss_personal_belonging
+                                        : 'X'}}</li>
+                                </ul>
+                            </div>
+
+                            <div class="main_popup" id="premium_break{{i}}">
+                                <div class="main_popup_overlay2 Premium_Breakup_popup{{i}}"></div>
+                                <div class="main_popup_wrapper main_popup_transition main_popup_animation "
+                                    style="max-width: 750px; height: calc(100vh - 200px); ">
+                                    <div class="main_popup_header border_bottom1 ">
+                                        <div class="d_flex flex_Equal flex_Middel w_100 pr_15 ">
+                                            <div class="fs_16 text_red fw_600 "> {{dataArValue.quotation_id}}</div>
+                                            <div class="d_flex flex_Equal flex_Middel position-relative">
+                                                <div>
+                                                    <div
+                                                        class="fs_16 text_red fw_600 mr_15 cursor_pointer email_slide_btn">
+                                                        <i class="fa-solid fa-envelope mr_10 "></i>Email
+                                                    </div>
+                                                    <div class="mobile_number_slide open_slide1" style="display: none;">
+                                                        <div class="form_group">
+                                                            <label>Share Quotation On Email</label>
+                                                            <div class="d_flex">
+                                                                <input type="email" name="mail" class="form_control"
+                                                                    placeholder="Enter Email Here....">
+                                                                <input type="submit" value="Submit"
+                                                                    class="border_none background_red fs_14 fw_600 border_red5px text_white">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>|
+                                                <div>
+                                                    <div
+                                                        class="fs_16 text_red fw_600 pl_15 mr_10 cursor_pointer mobile_btn">
+                                                        <i class="fa-solid fa-mobile-screen-button mr_10 "></i>Mobile
+                                                    </div>
+                                                    <div class="mobile_number_slide open_slide2" style="display: none;">
+                                                        <div class="form_group">
+                                                            <label>Share Quotation On Mobile</label>
+                                                            <div class="d_flex">
+                                                                <input type="number" name="mobile number"
+                                                                    class="form_control appearance_none"
+                                                                    placeholder="Enter Mobile Number Here...."
+                                                                    maxlength="10" />
+                                                                <input type="submit" value="Submit"
+                                                                    class="border_none background_red fs_14 fw_600 border_red5px text_white">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="main_popup_close_btn Premium_Breakup_popup "
+                                            (click)="PremiumBreckupClose(i)"><i class="fa-solid fa-xmark "></i></div>
+                                    </div>
+                                    <div class="main_popup_body " style="height: calc(100% - 50px); overflow-y: auto; ">
+                                        <div class="d_flex flex_column flex_Middel pop_content ">
+                                            <div class="d_flex flex_Equal flex_Middel w_100 border_gary px_10 mb_15 ">
+                                                <div>
+                                                    <img src="{{quoteResult.logo}}" alt="{{quoteResult.company}} ">
+                                                </div>
+                                                <div class="fs_13 text_dark fw_600 ">{{dataArValue.registration_no}}
+                                                </div>
+                                                <div class="d_flex flex_column flex_Middel flex_Center ">
+                                                    <span class="fs_13 text_dark fw_600 ">{{dataArValue.make}}</span>
+                                                    <span class="fs_13 text_dark fw_600 ">{{dataArValue.model}}
+                                                        {{dataArValue.variant}}</span>
+                                                </div>
+                                                <div class="d_flex flex_column flex_Middel flex_Center ">
+                                                    <span class="fs_13 text_dark fw_600 ">IDV :
+                                                        {{quoteResult.idv}}</span>
+                                                    <span class="fs_13 text_dark fw_600 "
+                                                        *ngIf="quoteResult.ncb > 0">NCB :
+                                                        {{quoteResult.v_data.curr_ncb}} %</span>
+                                                </div>
+                                            </div>
+                                            <div class="logo_popup w_100 ">
+                                                <!-- <div class="form_group d_flex flex_Equal flex_Middel mb_5 ">
+                                                    <div class="w_100 ">
+                                                        <div class="background_red text_white fs_14 fw_600 px_10 border_red5px ">Basic OD</div>
+                                                        <div class=" fs_10 fw_700 ">Basic Own Damage Premium {{quoteResult.od}}</div>
+                                                    </div>
+                                                    <div class="w_100 pl_15 ">
+                                                        <div class="background_red text_white fs_14 fw_600 px_10 border_red5px ">Discount</div>
+                                                        <div class=" fs_10 fw_700 ">NCB(50 %) {{quoteResult.ncb}}</div>
+                                                    </div>
+                                                </div> -->
+
+                                                <div class="form_group mb_0 " *ngIf="(quoteResult.v_data.tp_only !=1)">
+                                                    <div class="w_100 ">
+                                                        <div
+                                                            class="background_red text_white fs_14 fw_600 px_10 border_red5px ">
+                                                            Basic OD</div>
+                                                    </div>
+                                                    <div class="w_100 ">
+
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class=" fs_10 fw_700 width_three " >Basic Own Damage
+                                                                Premium {{quoteResult.od}}</div>
+                                                            <div class=" fs_10 fw_700 width_three " *ngIf="quoteResult.v_data.electrical_accessory==1">Electrical Accessory
+                                                                {{quoteResult.electrical_accessory > 0 ? quoteResult.electrical_accessory : 'X'}} </div>
+                                                            <div class=" fs_10 fw_700 width_three " *ngIf="quoteResult.v_data.non_electrical_accessory==1">Non Electrical
+                                                                Accessories {{quoteResult.Non_Electrical_Accessories > 0 ? quoteResult.Non_Electrical_Accessories : 'X'}} 
+                                                            </div>
+                                                        </div>
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class=" fs_10 fw_700 width_three " *ngIf="quoteResult.v_data.fule_kit==1">Fuel Kit Od
+                                                                {{quoteResult.fule_kit_od > 0 ? quoteResult.fule_kit_od : 'X'}} </div>
+                                                            <div class=" fs_10 fw_700 width_three " *ngIf="quoteResult.v_data.fiber_glass_fuel_tank==1">Fiber Glass Fuel
+                                                                Tank {{quoteResult.fiber_glass_fuel_tank}}</div>
+                                                            <!-- <div class=" fs_10 fw_700 width_three ">Fiber Glass Fuel Tank {{quoteResult.fiber_glass_fuel_tank}}</div> -->
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form_group mb_0 "
+                                                    *ngIf="(quoteResult.ncb > 0 || quoteResult.voluntary_excess > 0 || quoteResult.anti_theft_device > 0 || quoteResult.member_of_aai > 0) ">
+                                                    <div class="w_100 ">
+                                                        <div
+                                                            class="background_red text_white fs_14 fw_600 px_10 border_red5px ">
+                                                            Discount</div>
+                                                    </div>
+                                                    <div class="w_100 ">
+
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.ncb > 0">NCB {{quoteResult.ncb > 0 ?
+                                                                quoteResult.ncb : 'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.voluntary_excess==1">Voluntary
+                                                                Excess {{quoteResult.voluntary_excess > 0 ?
+                                                                quoteResult.voluntary_excess : 'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.anti_theft_device==1">Anti
+                                                                Theft Device {{quoteResult.anti_theft_device > 0 ?
+                                                                quoteResult.anti_theft_device : 'X'}}</div>
+                                                        </div>
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.member_of_aai==1">Member Of
+                                                                Aai {{quoteResult.member_of_aai > 0 ?
+                                                                quoteResult.member_of_aai : 'X'}}</div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form_group mb_0 "
+                                                    *ngIf="(quoteResult.v_data.tp_only !=1) && (quoteResult.zero_dept > 0 || quoteResult.engine_protector > 0 || quoteResult.road_side_assistance > 0 || quoteResult.consumables > 0 || quoteResult.tyre_cover > 0 || quoteResult.passenger_assist_cover > 0 || quoteResult.return_invoice > 0 || quoteResult.loss_of_key > 0 || quoteResult.hospital_cash_cover > 0 || quoteResult.ncb_protection > 0 || quoteResult.emergency_cover > 0 || quoteResult.loss_personal_belonging > 0)">
+                                                    <div class="w_100 ">
+                                                        <div
+                                                            class="background_red text_white fs_14 fw_600 px_10 border_red5px ">
+                                                            Addon</div>
+                                                    </div>
+                                                    <div class="w_100 ">
+
+
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class=" fs_10 fw_700 width_three"
+                                                                *ngIf="quoteResult.v_data.zero_dept ==1">Zero
+                                                                Depreciation {{quoteResult.zero_dept > 0 ?
+                                                                quoteResult.zero_dept : 'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.engine_protector ==1">Engine
+                                                                Protector {{quoteResult.engine_protector > 0 ?
+                                                                quoteResult.engine_protector : 'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.road_side_assistance ==1">Road
+                                                                Side Assistance {{quoteResult.road_side_assistance > 0 ?
+                                                                quoteResult.road_side_assistance : 'X'}}</div>
+                                                        </div>
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.consumables ==1">Consumables
+                                                                {{quoteResult.consumables > 0 ? quoteResult.consumables
+                                                                : 'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.tyre_cover ==1">Tyre Cover
+                                                                {{quoteResult.tyre_cover > 0 ? quoteResult.tyre_cover :
+                                                                'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.passenger_assist_cover ==1">
+                                                                Passenger Assist Cover
+                                                                {{quoteResult.passenger_assist_cover > 0 ?
+                                                                quoteResult.passenger_assist_cover : 'X'}}</div>
+                                                        </div>
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.return_invoice ==1">Return to
+                                                                Invoice {{quoteResult.return_invoice > 0 ?
+                                                                quoteResult.return_invoice : 'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.loss_of_key ==1">Loss Of Key
+                                                                {{quoteResult.loss_of_key > 0 ? quoteResult.loss_of_key
+                                                                : 'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.hospital_cash_cover ==1">
+                                                                Hospital Cash {{quoteResult.hospital_cash_cover > 0 ?
+                                                                quoteResult.hospital_cash_cover : 'X'}}</div>
+                                                        </div>
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.ncb_protection ==1">NCB
+                                                                Protection {{quoteResult.ncb_protection > 0 ?
+                                                                quoteResult.ncb_protection : 'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.emergency_cover ==1">Emergency
+                                                                {{quoteResult.emergency_cover > 0 ?
+                                                                quoteResult.emergency_cover : 'X'}}</div>
+                                                            <div class=" fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.loss_personal_belonging ==1">
+                                                                Loss personal belonging
+                                                                {{quoteResult.loss_personal_belonging > 0 ?
+                                                                quoteResult.loss_personal_belonging : 'X'}}</div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form_group mb_0 " *ngIf="(quoteResult.v_data.tp_only !=2)">
+                                                    <div class="w_100 ">
+                                                        <div
+                                                            class="background_red text_white fs_14 fw_600 px_10 border_red5px ">
+                                                            Third Party</div>
+                                                    </div>
+                                                    <div class="w_100 ">
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class="fs_10 fw_700 width_three ">Basic Third Party
+                                                                Liability {{quoteResult.tp}}</div>
+                                                            <div class="fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.pa_cover ==1">PA For Owner
+                                                                Driver {{quoteResult.pa > 0 ? quoteResult.pa : 'X'}}
+                                                            </div>
+                                                            <div class="fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.legal_liability_paid_driver==1">
+                                                                Legal Liability Paid Driver
+                                                                {{quoteResult.legal_liability_paid_driver > 0 ?
+                                                                quoteResult.legal_liability_paid_driver : 'X'}}</div>
+
+                                                        </div>
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class="fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.pacoverfor_unnamed_person ==1">
+                                                                Pa Unnamed Person
+                                                                {{quoteResult.pacoverfor_unnamed_person}}</div>
+                                                            <div class="fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.legal_liability_employee ==1">
+                                                                Legal Liability Employee
+                                                                {{quoteResult.legal_liability_employee > 0 ?
+                                                                quoteResult.legal_liability_employee : 'X'}}</div>
+                                                            <div class="fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.tppd_restricted_to ==1">Tppd
+                                                                Restricted To {{quoteResult.tppd_restricted_to > 0 ?
+                                                                quoteResult.tppd_restricted_to : 'X'}}</div>
+                                                        </div>
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+
+                                                            <div class="fs_10 fw_700 width_three "
+                                                                *ngIf="quoteResult.v_data.fule_kit ==1">Fuel Kit TP
+                                                                {{quoteResult.fule_kit_tp !='' ? quoteResult.fule_kit_tp
+                                                                : 'X'}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form_group mb_0 ">
+                                                    <div class="w_100 ">
+                                                        <div
+                                                            class="background_red text_white fs_14 fw_600 px_10 border_red5px ">
+                                                            Premium Details</div>
+                                                    </div>
+                                                    <div class="w_100 ">
+                                                        <div class="d_flex flex_Equal flex_Middel ">
+                                                            <div class="fs_10 fw_700 width_three ">Net Premium
+                                                                {{quoteResult.net}}</div>
+                                                            <div class="fs_10 fw_700 width_three ">GST (18%)
+                                                                {{quoteResult.gst}}</div>
+                                                            <div class="fs_10 fw_700 width_three ">Final Premium
+                                                                {{quoteResult.total_premium}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="main_popup_footer ">
+                                        <div class="d_flex flex_column flex_Middel w_100 ">
+                                            <button type="button"
+                                                class="next-button link_btn w_50 border_red30px text_center d_block border_none buy_now_btn_popup"
+                                                style="line-height: 18px; "
+                                                (click)="UpdateDetails(quoteResult.pa,quoteResult.company,dataArValue.quotation_id,quoteResult.od,quoteResult.tp,quoteResult.total_premium,quoteResult.end_date,quoteResult.idv,quoteResult.tenuerr,quoteResult.net,quoteResult.gst,quoteResult.start_date,dataArVal.other_tp,dataArVal.tppd)">Buy
+                                                Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- <i class="fa-solid fa-xmark"></i> -->
+                    </div>
+                    <div class="message_box text_dark P_15 border_gary mb_15 fs_14">
+                        <img src="assets/images/offlinequotes.png" alt="banner">
+                    </div>
+                    <div class="message_box text_dark P_15 border_gary mb_15 fs_14">
+                        Insurance is the subject matter of solicitation. Visitors are hereby informed that their
+                        information submitted on the website may be shared with insurers. The product information for
+                        comparison displayed on this website is of the insurers with whom our
+                        company has an agreement. Product information is authentic and solely based on the information
+                        received from the Insurer
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Vechile details popup -->
+
+
+<div class="main_popup" id="edit_vehical_details_popup">
+    <div class="main_popup_overlay2 edit_vehical_details"></div>
+    <div class="main_popup_wrapper main_popup_transition main_popup_animation" style="max-height: 295px;">
+        <div class="main_popup_header">
+            <div class="fs_16 text_red fw_600">Edit Vehicle Details</div>
+            <div class="main_popup_close_btn edit_vehical_details" (click)="ShowEditClose()"><i
+                    class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="main_popup_body">
+            <div class="d_flex flex_column flex_Middel pop_content">
+                <div class="w_100">
+
+                <form class="ngSubmit" [formGroup]="updateMakeModal" (ngSubmit)="updateMakeModelForm()">
+
+
+                    <input type="hidden" value="{{dataArValue.gadi_type}}" class="form_control" name="gadi_type"
+                        formControlName="gadi_type">
+
+
+
+                    <div class="logo_popup w_100">
+                        <div class="d_flex flex_Equal flex_Middel">
+                            <div class="form_group pr_15">
+                                <label>Manufacture</label>
+
+              
+
+                                <ng-select formControlName="make" (change)="GetModel('')"
+                                  (keyup)="GetMakeSearch($event)" 
+                                class="form_control moter_custom_select cs_custom_drop" >
+                                <ng-option *ngFor="let car of SelectMake" [value]="car.Id">{{car.Name}} </ng-option>
+                              </ng-select>
+
+                              <div *ngIf="isSubmitted && updateMakeModalError.make.errors "
+                              class="ValidationError">
+                              <div *ngIf="updateMakeModalError.make.errors.required">
+                                  Please Select make!</div>
+
+                          </div>
+                             </div>
+                            <div class="form_group">
+                                <label>Model</label>
+
+
+                                <ng-select formControlName="model" (change)="GetFuel('')"     (keyup)="GetModel($event)" 
+                                class="form_control moter_custom_select cs_custom_drop"  >
+                                <ng-option *ngFor="let car of SelectModal" [value]="car.Id">{{car.Name}} </ng-option>
+                              </ng-select>
+
+ 
+                              <div *ngIf="isSubmitted && updateMakeModalError.model.errors "
+                              class="ValidationError">
+                              <div *ngIf="updateMakeModalError.model.errors.required">
+                                  Please Select model!</div>
+
+                          </div>
+
+
+                            </div>
+                        </div>
+                        <div class="d_flex flex_Equal flex_Middel">
+                            <div class="form_group pr_15">
+                                <label>Fuel type</label>
+
+
+                                <ng-select formControlName="fuel_type"  (change)="GetVariant('')"     (keyup)="GetFuel($event)" 
+                                class="form_control moter_custom_select cs_custom_drop"  >
+                                <ng-option *ngFor="let car of SearchFule" [value]="car.Id">{{car.Name}} </ng-option>
+                              </ng-select>
+
+                              <div *ngIf="isSubmitted && updateMakeModalError.fuel_type.errors "
+                              class="ValidationError">
+                              <div *ngIf="updateMakeModalError.fuel_type.errors.required">
+                                  Please Select Fuel!</div>
+
+                          </div>
+
+ 
+                            </div>
+                            <div class="form_group">
+                                <label>Variant</label>
+
+
+
+                                <ng-select formControlName="variant"  (keyup)="GetVariant($event)" 
+                                class="form_control moter_custom_select cs_custom_drop" >
+                                <ng-option *ngFor="let car of SearchVariant" [value]="car.Id">{{car.Name}} </ng-option>
+                              </ng-select>
+
+
+                              <div *ngIf="isSubmitted && updateMakeModalError.variant.errors "
+                              class="ValidationError">
+                              <div *ngIf="updateMakeModalError.variant.errors.required">
+                                  Please Select Variant!</div>
+
+                          </div>
+                              
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d_flex flex_column flex_Middel w_100 mt_15">
+                        <button type="submit" class="next-button link_btn w_50 border_red30px text_center mb_10 d_block"
+                            style="line-height: 18px;">Continue</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        <div class="main_popup_footer d_none"></div>
+    </div>
+</div>
+
+
+
+
+<div class="main_popup" id="third_party_details">
+    <div class="main_popup_overlay2 open_popup_form"></div>
+    <div class="main_popup_wrapper main_popup_transition main_popup_animation" style="max-width: 350px;">
+        <div class="main_popup_header d_none">
+            <!-- <div class="main_popup_close_btn open_popup_form d_none"><i class="fa-solid fa-xmark"></i></div> -->
+        </div>
+        <div class="main_popup_body">
+            <div class="d_flex flex_column flex_Middel pop_content">
+                <form class="ngSubmit" [formGroup]="updateThirdParty" (ngSubmit)="UpdateData()">
+                 <div class="logo_popup w_100">
+                    <div class="fs_18 text_red fw_700 mb_15">THIRD PARTY POLICY DETAILS</div>
+                    <div class="form_group">
+                        <label for="date">THIRD PARTY POLICY Company</label>
+
+                        <ng-select formControlName="tp_expire_policy_cpmpany"
+                        class="form_control moter_custom_select cs_custom_drop">
+                        <ng-option *ngFor="let car of SelectPreviousInsurer" [value]="car.Id">{{car.Name}}
+                        </ng-option>
+                      </ng-select>
+                      
+                      
+
+                    </div>
+                    <div class="form_group">
+                        <label for="date">Third Party Policy No</label>
+                        <input type="text" formControlName="tp_expire_policy_number" placeholder="Third Party Policy No." class="form_control" />
+                    </div>
+                </div>
+                <div class="form_group">
+                    <label for="date">Third Party Expiry date</label>
+                    <input type="date" formControlName="tp_policy_expire_date" placeholder="dd/mm/yy" class="form_control" maxlength="10">
+                </div>
+                <div class="d_flex flex_Equal flex_Middel w_100">
+                    <a (click)="ownDamageClose(dataArValue.tp_only)" class="link_btn w_20 border_red30px text_center mb_10 d_block">Cancel</a>
+                    <button type="submit" class="link_btn border_red30px text_center mb_10 d_block border_none">Continue</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="main_popup_footer d_none"></div>
+    </div>
+</div>

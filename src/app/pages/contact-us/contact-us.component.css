@@ -1,0 +1,5 @@
+@media (max-width:575px) {
+    .contact_page .text_left.pb_60 {
+        padding-bottom: 0px !important;
+    }
+}

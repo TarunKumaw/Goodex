@@ -1,0 +1,621 @@
+<link rel="stylesheet" href="https://squareinsurance.in/assets/rights-page1.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+  integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://checkgrid.in/public/chosen/chosen.css">
+<link rel="stylesheet" href="https://checkgrid.in/public/chosen/docsupport/prism.css">
+
+
+
+<section class="moter_form_details mt_40">
+  <div class="container">
+    <div class="row d_flex flex_Center">
+      <div class="col-md-10">
+        <div class="get_details_forms">
+          <div class="mb_40 border_gary border_red5px P_15">
+            <div class="d_flex flex_Center flex_column flex_Middel text_center">
+              <h3 class="fs_20 text_red fw_800 text_uppercase text_bottom_border pb_10">WELCOME TO Gaadi Insurance
+              </h3>
+              <p class="fs_14 ">Get the best quotes for your 
+                
+                <span *ngIf="urlSegment=='car-insurance-online'">car</span>
+                <span *ngIf="urlSegment=='two-wheeler-online'">bike</span>
+                . So lets get started!<br> Enter Registration Number
+              </p>
+            </div>
+            <div class="d_flex flex_Equal position-relative">
+              <p class="prev text_red"  routerLink="/"    id="back"><span class="fa fa-long-arrow-left mr_10" 
+                  routerLinkActive="router-link-active"> </span>Go Back</p>
+              <div class="col-md-6">
+
+
+                <div class="card2 first-screen show  ml-2" *ngIf="Section1 == 1">
+                  <div class="P_15">
+                    <form class="form" [formGroup]="AddSenctionForm1">
+
+                      <div class="form_group">
+                        <div class="d_flex flex_Equal flex_Middel">
+                          <h3 class="fs_16 text_dark fw_600 mb_15 mt_15">Get Details</h3>
+
+                          
+                          <!-- <div *ngIf="isSubmitted && formControls1.Registration_State_Code.errors"
+                            class="ValidationError fs_12 fw_400">
+                            <div *ngIf="isSubmitted && formControls1.Registration_State_Code.required">
+                              Please Enter Valid number!</div>
+                            <div *ngIf="isSubmitted && formControls1.Registration_State_Code.pattern">
+                              Please Enter Valid number!</div>
+                          </div> -->
+                           <div *ngIf="isSubmitted && formControls1.Registration_State_Code.errors "
+                            class="ValidationError fs_12 fw_400">
+                            <div *ngIf="formControls1.Registration_State_Code.errors.required">
+                              Please Enter Valid number !</div>
+                            <div *ngIf="formControls1.Registration_State_Code.errors.pattern">
+                              Please Enter State number!</div>
+                          </div>
+                        <!--  <div *ngIf="isSubmitted && formControls1.Registration_City_Code.errors "
+                            class="ValidationError fs_12 fw_400">
+                            <div *ngIf="formControls1.Registration_City_Code.errors.required">
+                              Please Enter City number!</div>
+                            <div *ngIf="formControls1.Registration_State_Code.errors.pattern">
+                              Please Enter State number!</div>
+                          </div>
+                          <div *ngIf="isSubmitted && formControls1.Registration_Code.errors " class="ValidationError fs_12 fw_400">
+                            <div *ngIf="formControls1.Registration_Code.errors.required">
+                              Please Enter Registration number!</div>
+                          </div> -->
+                        </div>
+
+                        <div class="d_flex flex_Equal">
+                          <input class="myinput AutoUppercase form_control text_uppercase" id="Registration_State_Code"
+                            (keyup)="AutoTabRegistrationNo($event,2,'Registration_District_Code')"
+                            formControlName="Registration_State_Code" type="text" maxlength="2" placeholder="XX"
+                             >
+                          <input class="myinput AutoUppercase form_control text_uppercase"
+                            id="Registration_District_Code"
+                            (keyup)="AutoTabRegistrationNo($event,2,'Registration_City_Code')"
+                            formControlName="Registration_District_Code" placeholder="XX" type="text" maxlength="2"
+                             >
+                          <input *ngIf="this.GadiType == 'rollower'"
+                            (keyup)="AutoTabRegistrationNo($event,3,'Registration_Code')" id="Registration_City_Code"
+                            class="myinput AutoUppercase form_control text_uppercase" placeholder="XXX"
+                            formControlName="Registration_City_Code" type="text" maxlength="3"  >
+                          <input *ngIf="this.GadiType == 'rollower'"
+                            class="myinput AutoUppercase form_control text_uppercase" id="Registration_Code"
+                            formControlName="Registration_Code" type="text" placeholder="XXXX" maxlength="4"  >
+                        </div>
+                      </div>
+                      <div class="d_flex flex_Equal flex_Middel">
+                        <div *ngIf="this.GadiType == 'rollower'" class="next-button text-center mt-1 ml-2"
+                          style="width: 127px" (click)="UpdateGadiType('new_gadi')">
+                          New Gadi <span class="fa fa-arrow-right"></span></div>
+                        <div *ngIf="this.GadiType == 'new_gadi'" class="next-button text-center mt-1 ml-2"
+                          style="width: 150px" (click)="UpdateGadiType('rollower')">
+                          Rollower <span class="fa fa-arrow-right"></span></div>
+                        <div class="next-button text-center mt-1 ml-2" style="width: 130px"
+                          (click)="AddPreQuotesForm(1)">
+                          Get Details <span class="fa fa-arrow-right"></span></div>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+
+                <div class="card2 ml-2 show" *ngIf="Section1 == 2">
+                  <div class="P_15">
+                    <form class="form" [formGroup]="AddSenctionForm2">
+
+                      <h3 class="fs_16 text_red fw_600 mb_15 mt_15">Select Manufacturer</h3>
+                      <div class="form_group">
+
+                        <!-- <ng-select formControlName="QuoteMake" [multiple]="true" [items]="items" class="form-control"
+                        (selected)="selected($event)"  (removed)="removed($event)"
+                        placeholder=""></ng-select> -->
+
+                        <!-- <ng-multiselect-dropdown class="form-control" name="QuoteMake" placeholder="Select Manufacturer"
+                          [data]="SelectMake" formControlName="QuoteMake" (keyup)="GetMake($event)"
+                          [settings]="dropdownSettingsingleselect">
+                        </ng-multiselect-dropdown> -->
+
+
+                        <ng-select formControlName="QuoteMake" (keyup)="GetMake($event)"  (change)="AddPreQuotesForm(2)"
+                          class="form_control moter_custom_select cs_custom_drop">
+                          <ng-option *ngFor="let car of SelectMake" [value]="car.Id"   >{{car.Name}} </ng-option>
+                        </ng-select>
+
+                      </div>
+
+                      <div *ngIf="isSubmitted && formControls2.QuoteMake.errors " class="ValidationError">
+                        <div *ngIf="formControls2.QuoteMake.errors.required">
+                          Please Enter Make!</div>
+                      </div>
+
+
+
+
+                      <div class="next-button text-center mt-1 ml-2" (click)="AddPreQuotesForm(2)">Next <span
+                          class="fa fa-arrow-right"></span></div>
+                    </form>
+
+                  </div>
+
+                </div>
+
+                <div class="card2 ml-2 show" *ngIf="Section1 == 3">
+                  <div class="P_15">
+                    <form class="form" [formGroup]="AddSenctionForm3">
+
+                      <h3 class="fs_16 text_red fw_600 mb_15 mt_15">Select Model</h3>
+                      <div class="form_group">
+                        <!-- <ng-multiselect-dropdown class="form-control" name="QuoteModel" placeholder="Select Model"
+                          [data]="SelectModel" formControlName="QuoteModel" (
+                          [settings]="dropdownSettingsingleselect">
+                        </ng-multiselect-dropdown> -->
+
+
+                        <ng-select formControlName="QuoteModel" (keyup)="GetModel($event)" (change)="AddPreQuotesForm(3)"
+                          class="form_control moter_custom_select cs_custom_drop">
+                          <ng-option *ngFor="let car of SelectModel" [value]="car.Id"   >{{car.Name}} </ng-option>
+                        </ng-select>
+
+
+                      </div>
+                      <div *ngIf="isSubmitted && formControls3.QuoteModel.errors " class="ValidationError">
+                        <div *ngIf="formControls3.QuoteModel.errors.required">
+                          Please Enter Model!</div>
+                      </div>
+
+
+                    </form>
+
+                    <div class="next-button text-center mt-1 ml-2" (click)="AddPreQuotesForm(3)">Next <span
+                        class="fa fa-arrow-right"></span></div>
+                  </div>
+                </div>
+
+                <div class="card2 ml-2 show" *ngIf="Section1 == 4">
+                  <div class="P_15">
+                    <form class="form" [formGroup]="AddSenctionForm4">
+
+                      <h3 class="fs_16 text_red fw_600 mb_15 mt_15">Select Fuel Type</h3>
+                      <div class="form_group">
+
+                        <!-- <ng-multiselect-dropdown class="form-control" name="QuoteFuel" placeholder="Select Fuel"
+                          [data]="SelectFuel" formControlName="QuoteFuel" (keyup)="GetFuel($event)"
+                          [settings]="dropdownSettingsingleselect">
+                        </ng-multiselect-dropdown> -->
+
+
+                        <ng-select formControlName="QuoteFuel" class="form_control moter_custom_select cs_custom_drop" (change)="AddPreQuotesForm(4)" >
+                          <ng-option *ngFor="let car of SelectFuel" [value]="car.Id"  >{{car.Name}} </ng-option>
+                        </ng-select>
+
+
+
+                      </div>
+                      <div *ngIf="isSubmitted && formControls4.QuoteFuel.errors " class="ValidationError">
+                        <div *ngIf="formControls4.QuoteFuel.errors.required">
+                          Please Enter Fuel!</div>
+                      </div>
+
+                    </form>
+
+                    <div class="next-button text-center mt-1 ml-2" (click)="AddPreQuotesForm(4)">Next <span
+                        class="fa fa-arrow-right"></span></div>
+                  </div>
+
+                </div>
+
+                <div class="card2 ml-2 show" *ngIf="Section1 == 5">
+                  <div class="P_15">
+                    <form class="form" [formGroup]="AddSenctionForm5">
+
+                      <h3 class="fs_16 text_red fw_600 mb_15 mt_15">Select Variant</h3>
+                      <div class="form_group">
+                        <!-- <ng-multiselect-dropdown class="form-control" name="QuoteVariant" placeholder="Select Variant"
+                          [data]="SelectVariant" formControlName="QuoteVariant" (keyup)="GetVariant($event)"
+                          [settings]="dropdownSettingsingleselect">
+                        </ng-multiselect-dropdown> -->
+
+                        <ng-select formControlName="QuoteVariant" (keyup)="GetVariant($event)" (change)="AddPreQuotesForm(5)"
+                          class="form_control moter_custom_select cs_custom_drop">
+                          <ng-option *ngFor="let car of SelectVariant" [value]="car.Id" (click)="AddPreQuotesForm(5)">{{car.Name}} </ng-option>
+                        </ng-select>
+
+
+
+                      </div>
+                      <div *ngIf="isSubmitted && formControls5.QuoteVariant.errors " class="ValidationError">
+                        <div *ngIf="formControls5.QuoteVariant.errors.required">
+                          Please Enter Variant!</div>
+                      </div>
+
+                    </form>
+
+                    <div class="next-button text-center mt-1 ml-2" (click)="AddPreQuotesForm(5)">Next <span
+                        class="fa fa-arrow-right"></span></div>
+                  </div>
+                </div>
+
+                <div class="card2 ml-2 show" *ngIf="Section1 == 6">
+                  <div class="P_15">
+                    <form class="form" [formGroup]="AddSenctionForm6">
+
+                      <h3 class="fs_16 text_red fw_600 mb_15 mt_15">Select Registration Year</h3>
+                      <div class="form_group">
+
+
+                        <ng-select formControlName="QuoteRegistrationYear"  (change)="AddPreQuotesForm(6)" 
+                          class="form_control moter_custom_select cs_custom_drop">
+                          <ng-option *ngFor="let car of SelectRegistrationYear" [value]="car.Id" >{{car.Name}}
+                          </ng-option>
+                        </ng-select>
+
+
+                        <!-- <ng-multiselect-dropdown class="form-control" name="QuoteRegistrationYear"
+                          placeholder="Select RegistrationYear" [data]="SelectRegistrationYear"
+                          formControlName="QuoteRegistrationYear" [settings]="dropdownSettingsingleselect">
+                        </ng-multiselect-dropdown> -->
+
+                      </div>
+                      <div *ngIf="isSubmitted && formControls6.QuoteRegistrationYear.errors " class="ValidationError">
+                        <div *ngIf="formControls6.QuoteRegistrationYear.errors.required">
+                          Please Enter Registration Year!</div>
+                      </div>
+                    </form>
+
+                    <div class="next-button text-center mt-1 ml-2" (click)="AddPreQuotesForm(6)">Next <span
+                        class="fa fa-arrow-right"></span></div>
+                  </div>
+                </div>
+
+                <div class="card2 ml-2 show" *ngIf="Section1 == 7">
+                  <div class="P_15">
+                    <form class="form" [formGroup]="AddSenctionForm7">
+
+                      <h3 class="fs_16 text_red fw_600 mb_15 mt_15">Select Previous Insurer</h3>
+
+
+                      <div class="form_group"
+                        *ngIf="AddSenctionForm7.value['QuoteDontKnow'] != true || AddSenctionForm7.value['QuoteDontKnow'] != 1">
+                        <label>Select Policy Expire</label>
+                        <!-- <ng-multiselect-dropdown class="form-control" name="QuotePolicyExpiry"
+                          placeholder="Select Policy Expire" [data]="SelectPolicyExpiry"
+                          formControlName="QuotePolicyExpiry" [settings]="dropdownSettingsingleselect">
+                        </ng-multiselect-dropdown> -->
+
+
+                        <ng-select formControlName="QuotePolicyExpiry"
+                          class="form_control moter_custom_select cs_custom_drop">
+                          <ng-option *ngFor="let car of SelectPolicyExpiry" [value]="car.Id">{{car.Name}} </ng-option>
+                        </ng-select>
+                        <div *ngIf="isSubmitted && formControls7.QuotePolicyExpiry.errors "
+                          class="ValidationError fs_12 fw_400">
+                          <div *ngIf="formControls7.QuotePolicyExpiry.errors.required">
+                            Please Select Policy Expiry!</div>
+
+                        </div>
+
+                      </div>
+                      <div class="form_group"
+                        *ngIf="AddSenctionForm7.value['QuoteDontKnow'] != true || AddSenctionForm7.value['QuoteDontKnow'] != 1">
+                        <label>Select Previous Policy Type</label>
+                        <!-- <ng-multiselect-dropdown class="form-control" name="QuotePreviousPolicy"
+                          placeholder="Select PreviousPolicy" [data]="SelectPreviousPolicy"
+                          formControlName="QuotePreviousPolicy" [settings]="dropdownSettingsingleselect">
+                        </ng-multiselect-dropdown> -->
+
+                        <ng-select formControlName="QuotePreviousPolicy"
+                          class="form_control moter_custom_select cs_custom_drop">
+                          <ng-option *ngFor="let car of SelectPreviousPolicy" [value]="car.Id">{{car.Name}} </ng-option>
+                        </ng-select>
+
+                        <div *ngIf="isSubmitted && formControls7.QuotePreviousPolicy.errors "
+                          class="ValidationError fs_12 fw_400">
+                          <div *ngIf="formControls7.QuotePreviousPolicy.errors.required">
+                            Please Select Previous Policy!</div>
+
+                        </div>
+                      </div>
+
+                      <div class="form_group"
+                        *ngIf="AddSenctionForm7.value['QuoteDontKnow'] != true || AddSenctionForm7.value['QuoteDontKnow'] != 1">
+                        <label>Select Previous Insurer </label>
+                        <!-- 
+                        <ng-multiselect-dropdown class="form-control" name="QuotePreviousInsurer"
+                          placeholder="Select PreviousInsurer" [data]="SelectPreviousInsurer"
+                          formControlName="QuotePreviousInsurer" [settings]="dropdownSettingsingleselect">
+                        </ng-multiselect-dropdown> -->
+
+
+                        <ng-select formControlName="QuotePreviousInsurer"
+                          class="form_control moter_custom_select cs_custom_drop">
+                          <ng-option *ngFor="let car of SelectPreviousInsurer" [value]="car.Id">{{car.Name}}
+                          </ng-option>
+                        </ng-select>
+                        <div *ngIf="isSubmitted && formControls7.QuotePreviousInsurer.errors "
+                          class="ValidationError fs_12 fw_400">
+                          <div *ngIf="formControls7.QuotePreviousInsurer.errors.required">
+                            Please Select Previous Insurer!</div>
+
+                        </div>
+                      </div>
+
+                      <div class="form_group">
+                        <div class="d_block mb_15">
+                          <div class="custom_checkbox">
+                            <input type="checkbox" value="1" (click)="clickSetValidatiors()"
+                              formControlName="QuoteDontKnow" id="Bike_new">
+                            <label for="Bike_new"></label>
+                          </div>
+
+                          <span><label> &nbsp; <b>Don't know previous policy details </b> </label></span>
+
+                          <div *ngIf="isSubmitted && formControls7.QuoteDontKnow.errors " class="ValidationError">
+                            <div *ngIf="formControls7.QuoteDontKnow.errors.required"> Don't Know required! </div>
+                          </div>
+                        </div>
+                        <!-- <div class="otp_btn text-center mt-1 ml-2 main_popup_toggle_newotp mt_20" style="width: 150px;">
+                          Send OTP <span class="fa fa-arrow-right"></span></div> -->
+                      </div>
+
+
+
+
+                      <!-- <div class="form_group">
+                        <input type="checkbox" formControlName="QuoteDontKnow" id="checkboxID">
+                        <label>Dont't Know previous policy</label>
+                      </div> -->
+                    </form>
+
+
+                    <div class="next-button text-center mt-1 ml-2" (click)="AddPreQuotesForm(7)">Next <span
+                        class="fa fa-arrow-right"></span></div>
+                  </div>
+                </div>
+
+                <div class="card2 ml-2 show" *ngIf="Section1 == 8">
+                  <div class="P_15">
+                    <form class="form" [formGroup]="AddSenctionForm8">
+
+                      <h3 class="fs_16 text_red fw_600 mb_15 mt_15">PLEASE FILL YOUR DETAILS</h3>
+                      <div class="form_group">
+                        <input type="text" formControlName="QuoteName" placeholder="Enter Name"
+                          class="form_control mb_15">
+
+                        <div *ngIf="isSubmitted && formControls8.QuoteName.errors " class="ValidationError">
+                          <div *ngIf="formControls8.QuoteName.errors.required">
+                            Invalid Name !</div>
+
+                        </div>
+
+                        <input type="mail" formControlName="QuoteEmail" placeholder="Enter Email Id"
+                          class="form_control mb_15">
+
+                        <div *ngIf="isSubmitted && formControls8.QuoteEmail.errors " class="ValidationError">
+                          <div *ngIf="formControls8.QuoteEmail.errors.required">
+                            Invalid Email !</div>
+                          <div *ngIf="formControls8.QuoteEmail.errors.pattern">
+                            Invalid Email Pattern !</div>
+
+
+                        </div>
+
+
+                        <input type="text" formControlName="QuoteMobile" placeholder="Enter Mobile Number"
+                          maxlength="10" class="form_control">
+
+                        <div *ngIf="isSubmitted && formControls8.QuoteMobile.errors " class="ValidationError">
+                          <div
+                            *ngIf="(formControls8.QuoteMobile.errors.maxlength || formControls8.QuoteMobile.errors.required || formControls8.QuoteMobile.errors.pattern || formControls8.QuoteMobile.errors.minLength )">
+                            Invalid Mobile !</div>
+
+                        </div>
+                      </div>
+
+
+                      <!-- <div class="col-md-12 mb_15">
+                        <div class="fs_18 text_red fw_600 mt_15">
+                          <div class="custom_checkbox">
+                            <input type="checkbox" value="1" formControlName="hypothecation" id="Hypothecation">
+                            <label for="Hypothecation"></label>
+                          </div>
+                          <span>Hypothecation?</span>
+                          <div *ngIf="isSubmitted && formControls2.hypothecation.errors " class="ValidationError">
+                            <div *ngIf="formControls2.hypothecation.errors.required">
+                              Please Select Hypothecation!</div>
+
+                          </div>
+                        </div>
+                      </div> -->
+
+
+                      <div class="form_group">
+                        <div class="d_block mb_15">
+
+
+                          <div class="custom_checkbox">
+                            <input type="checkbox" value="1" formControlName="QuoteConditions" id="Bike_new">
+                            <label for="Bike_new"></label>
+                          </div>
+                          &nbsp; &nbsp; By clicking on "Continue",<a [routerLink]="['/privacy-policy']"
+                            routerLinkActive="router-link-active" target="_blank"><span class="linkedd">Privacy
+                              Policy</span></a>  &  <a [routerLink]="['/terms-and-conditions']"
+                            routerLinkActive="router-link-active" target="_blank"><span class="linkedd">Terms of Use
+                            </span></a>
+
+
+                          <div *ngIf="isSubmitted && formControls8.QuoteConditions.errors " class="ValidationError">
+                            <div *ngIf="formControls8.QuoteConditions.errors.required">
+                              required!</div>
+
+                          </div>
+
+
+                        </div>
+                        <!-- <div class="otp_btn text-center mt-1 ml-2 main_popup_toggle_newotp mt_20" style="width: 150px;">
+                          Send OTP <span class="fa fa-arrow-right"></span></div> -->
+                      </div>
+
+                    </form>
+
+                    <div class="next-button text-center mt-1 ml-2 main_popup_toggle_submit"
+                      (click)="AddPreQuotesForm(8)">Submit <span class="fa fa-arrow-right"></span></div>
+                  </div>
+                </div>
+
+                <!-- </form> -->
+
+
+              </div>
+              <div class="col-md-6 pt_30">
+                <div class="border_gary border_red5px P_15">
+                  <h3 class="fs_16 text_red fw_600 mb_15">
+                    <span *ngIf="urlSegment=='car-insurance-online'">Private Car</span>
+                <span *ngIf="urlSegment=='two-wheeler-online'">Two Wheeler</span>
+                   
+                  </h3>
+                  <div
+                    class="d_flex flex_Equal flex_Middel border_gary border_red5px px_10 py_5 mb_10 fs_12 text_capitalize">
+                    <span>Registration Number</span>
+                    <strong (click)="AddPreQuotesForm(0)">{{this.RegistrationNumber}}</strong>
+                  </div>
+                  <div
+                    class="d_flex flex_Equal flex_Middel border_gary border_red5px px_10 py_5 mb_10 fs_12 text_capitalize">
+                    <span>Manufacturer</span>
+                    <strong>{{this.MakeValue}}</strong>
+                  </div>
+                  <div
+                    class="d_flex flex_Equal flex_Middel border_gary border_red5px px_10 py_5 mb_10 fs_12 text_capitalize">
+                    <span>Model</span>
+                    <strong>{{this.ModelValue}}</strong>
+                  </div>
+                  <div
+                    class="d_flex flex_Equal flex_Middel border_gary border_red5px px_10 py_5 mb_10 fs_12 text_capitalize">
+                    <span>Fuel Type</span>
+                    <strong>{{this.FuelValue}}</strong>
+                  </div>
+                  <div
+                    class="d_flex flex_Equal flex_Middel border_gary border_red5px px_10 py_5 mb_10 fs_12 text_capitalize">
+                    <span>Variant</span>
+                    <strong>{{this.VariantValue}}</strong>
+                  </div>
+                  <!-- <div class="d_flex flex_Equal flex_Middel border_gary border_red5px px_10 py_5 fs_12 text_capitalize">
+                    <span>Registration Year</span>
+                    <strong>2019</strong>
+                  </div> -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <div class="main_popup">
+  <div class="main_popup_overlay main_popup_toggle"></div>
+  <div class="main_popup_wrapper main_popup_transition main_popup_animation">
+    <div class="main_popup_header">
+      <div class="main_popup_close_btn main_popup_toggle"><i class="fa-solid fa-xmark"></i></div>
+    </div>
+    <div class="main_popup_body">
+      <div class="d_flex flex_column flex_Middel pop_content text_center">
+        <div>
+          <img src="assets/images/header_images/logo.png" alt="main popup">
+          <div class="fs_18 fw_600 text_red mt_20">Getting In Touch With Us Is Easy</div>
+        </div>
+        <div class="d_flex flex_column flex_Middel w_100 mt_40">
+          <a href="javascript:void(0);" class="link_btn w_50 border_red30px text_center mb_10 d_block">Customer</a>
+          <a href="javascript:void(0);" class="link_btn w_50 border_red30px text_center d_block">POS</a>
+        </div>
+      </div>
+    </div>
+    <div class="main_popup_footer d_none"></div>
+  </div>
+</div> -->
+<!-- <div class="main_popup" id="new_otp">
+  <div class="main_popup_overlay2 main_popup_toggle_newotp"></div>
+  <div class="main_popup_wrapper main_popup_transition main_popup_animation" style="height: 200px;">
+    <div class="main_popup_header">
+      <div class="main_popup_close_btn main_popup_toggle_newotp"><i class="fa-solid fa-xmark"></i></div>
+    </div>
+    <div class="main_popup_body">
+      <div class="d_flex flex_column flex_Middel pop_content">
+        <div class="logo_popup">
+          <div class="form_group">
+            <label for="phone">OTP</label>
+            <input type="tel" name="tel" placeholder="Enter Your OTP" class="form_control" maxlength="6">
+          </div>
+        </div>
+        <div class="d_flex flex_column flex_Middel w_100 mt_15">
+          <a href="javascript:void(0);"
+            class="next-button link_btn w_50 border_red30px text_center mb_10 d_block">Verify</a>
+        </div>
+      </div>
+    </div>
+    <div class="main_popup_footer d_none"></div>
+  </div>
+</div>
+
+<div class="main_popup" id="submit_popup">
+  <div class="main_popup_overlay2 main_popup_toggle_submit"></div>
+  <div class="main_popup_wrapper main_popup_transition main_popup_animation" style="max-width: 550px;">
+    <div class="main_popup_header">
+      <div class="main_popup_close_btn main_popup_toggle_submit"><i class="fa-solid fa-xmark"></i></div>
+    </div>
+    <div class="main_popup_body">
+      <div class="d_flex flex_column flex_Middel pop_content">
+        <div class="logo_popup d_flex flex_Equal flex_Middel w_100">
+          <div class="form_group pr_15">
+            <label for="date">Policy Expire Date</label>
+            <input type="text" name="date" placeholder="Policy Expire Date" class="form_control datepicker"
+              maxlength="10">
+          </div>
+          <div class="form_group">
+            <label for="date">Claim made in expiring policy?</label>
+            <div class="toggle_buttons">
+              <input type="radio" id="radio_one" name="switch_one" value="Yes" onclick="Js_Yes($);" />
+              <label for="radio_one">Yes</label>
+              <input type="radio" id="radio_two" name="switch_one" value="No" onclick="Js_No($);" checked />
+              <label for="radio_two">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="form_group d_flex flex_Center flex_column text_center" id="check_uncheck">
+          <label>Previous No Claim Bonus (NCB)</label>
+          <div class="toggle_buttons flex_Center">
+            <input type="radio" id="radioone" name="switch-one" value="0" checked />
+            <label for="radioone">0%</label>
+            <input type="radio" id="radiotwo" name="switch-one" value="20" />
+            <label for="radiotwo">20%</label>
+            <input type="radio" id="radiothree" name="switch-one" value="25" />
+            <label for="radiothree">25%</label>
+            <input type="radio" id="radiofour" name="switch-one" value="35" />
+            <label for="radiofour">35%</label>
+            <input type="radio" id="radiofive" name="switch-one" value="45" />
+            <label for="radiofive">45%</label>
+            <input type="radio" id="radiosix" name="switch-one" value="50" />
+            <label for="radiosix">50%</label>
+          </div>
+        </div>
+        <div class="fs_12 text_center">*Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+          Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+          of type and scrambled it to make a type
+          specimen book.</div>
+        <div class="d_flex flex_column flex_Middel w_100 mt_15">
+          <a href="quotes.html" class="next-button link_btn w_50 border_red30px text_center mb_10 d_block"
+            style="width:200px;line-height: 18px;">Confirm & Continue</a>
+        </div>
+      </div>
+    </div>
+    <div class="main_popup_footer d_none"></div>
+  </div>
+</div> -->
+
+<!-- <script src="https://checkgrid.in/public/loadingoverlap/loadingoverlay.min.js"></script>
+<script src="https://checkgrid.in/public/loadingoverlap/loadingoverlay_progress.min.js"></script>
+<script src="https://checkgrid.in/public/chosen/chosen.jquery.js" type="text/javascript"></script>
+<script src="https://checkgrid.in/public/chosen/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://checkgrid.in/public/chosen/docsupport/init.js" type="text/javascript" charset="utf-8"></script> -->

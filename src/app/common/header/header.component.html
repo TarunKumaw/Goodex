@@ -1,0 +1,40 @@
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="logo">
+                        <a class="navbar-brand" routerLink="/" (click)="ShowMobilePoupup()" >
+                            <img src="assets/images/header_images/logo.svg" alt="Logo" class="Logo">
+                        </a>
+                    </div>                    
+                    <div class="collapse navbar-collapse bottom_nav" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml_auto">
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="ShowMobilePoupup()"  routerLink="/about">About Us</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" (click)="ShowMobilePoupup()" routerLink="/products/car-insurance">Car Insurance</a></li>
+                                    <li><a class="dropdown-item" (click)="ShowMobilePoupup()" routerLink="/products/bike-insurance">Bike Insurance</a></li>
+                                    <li><a class="dropdown-item" (click)="ShowMobilePoupup()" routerLink="/products/health-insurance">Health Insurance</a></li>
+                                    <li><a class="dropdown-item" (click)="ShowMobilePoupup()" routerLink="/products/travel-insurance">Travel Insurance</a></li>
+                                    <li><a class="dropdown-item" (click)="ShowMobilePoupup()" routerLink="/products/corporate-insurance">Corporate Insurance</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="ShowMobilePoupup()" routerLink="/contact-us">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="ShowMobilePoupup()" routerLink="/become-pos">Become POS</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="login_btn"><a data-target="#login_poupup_opEN" (click)="ShowLoginPoupup()" class="main_btn main_popup_toggle">Login</a></div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,37 @@
+<section class="payment_page_css mt_40 mb_15">
+    <div class="container">
+       <div class="row">
+         <div class="col-md-6">
+            <div class="payment_box">
+               <h1 class="fs_24 text_red fw_600">Great! You have done it.</h1>
+               <p class="fs_13 text_dark mb_0 fw_600">Your two wheeler is secured, digital policy document will reach you shortly to your mail.</p>
+               <p class="fs_13 text_dark">only digital copy of the policy will be issued. this is the original policy document,  valid for all purpose.</p>
+               <div>
+                  <ul class="payment_block">
+                     <li><span><i class="fa-solid fa-money-check mr_10"></i>Premium paid :</span> <label> {{dataArValue.details.premium}} </label> </li>
+                     <li><span><i class="fa-solid fa-signal mr_10"></i>Status : </span><label *ngIf="dataArValue.details.payment_status==1">Success</label><label *ngIf="dataArValue.details.payment_status!=1">Failed</label></li>
+                     <li><span><i class="fa-solid fa-user-tie mr_10"></i>Customer Name : </span> <label>{{dataArValue.user_details.salutation}} {{dataArValue.user_details.first_name}} {{dataArValue.user_details.last_name}}</label> </li>
+                     <li><span><i class="fa-solid fa-credit-card mr_10"></i>Payment time : </span> <label>{{dataArValue.details.payment_time}}</label> </li>
+                     <li><span><i class="fa-solid fa-quote-left mr_10"></i>Quotation Id : </span> <label>{{dataArValue.details.quotation_id}}</label> </li>
+                     <li><span><i class="fa-solid fa-building-columns mr_10"></i>Company Name : </span> <label>{{dataArValue.details.company}}</label> </li>
+                     <li *ngIf="dataArValue.details.policy_no!=''"><span><i class="fa-solid fa-file-lines mr_10"></i>Policy No :</span><label>{{dataArValue.details.policy_no}}</label></li>
+                     <li class="button-li" *ngIf="dataArValue.details.policy_no!=''">
+                        <a href="https://squarebweb-documents.s3.ap-south-1.amazonaws.com/web/pdf-motor/2021-22/SQTW2022020317275720703_F8UFEaRdNqRdNqZaNGxbMaF6NqZ6NWN%3D.pdf" download="" target="_blank">
+                           <button type="button" name="get_policy" class="download_policy" target="_blank">                      
+                              <i class="fa fa-download mr_10"></i>Download Policy
+                           </button>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>    
+         <div class="col-md-6">
+            <div class="img_pay_box">
+               <span *ngIf="dataArValue.details.payment_status==1"><img src="../../../assets/images/successful.png" alt="Payment Successful" style="width: 85%;"></span>
+               <span *ngIf="dataArValue.details.payment_status!=1"><img src="../../../assets/images/failed.png" alt="Payment Successful" style="width: 85%;"></span>               
+            </div>
+         </div>     
+       </div>
+    </div>
+ </section>

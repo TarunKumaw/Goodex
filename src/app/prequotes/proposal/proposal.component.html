@@ -1,0 +1,911 @@
+<section class="get_form_other_filds">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+                <div class="Proposal_page">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div
+                                class="d_flex flex_Equal flex_Middel cursor_pointer fs_16 fw_600 background_red border_red5px px_10 py_5 text_white mb_15">
+                                <span><i class="fa-solid fa-user mr_10"></i>Owner Details</span><span
+                                    class="edit_icon"><i class="fa-solid fa-pen-to-square"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="form" [formGroup]="Owner_Details_Form">
+                        <div class="row mb_15 mx_0 Proposal_page_body "
+                            [ngClass]="(this.ShowForm == 1 ? 'Proposal_page_active' : 'else' )">
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Salutation</small>
+                                        <div *ngIf="isSubmitted && formControls1.salutation.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.salutation.errors.required">
+                                                Please Select Salutation!</div>
+                                            <div *ngIf="formControls1.salutation.errors.pattern">
+                                                Please Select Salutation!</div>
+                                        </div>
+                                    </label>
+
+                                    <ng-select formControlName="salutation"
+                                        class="form_control moter_custom_select cs_custom_drop">
+                                        <ng-option *ngFor="let car of SalutationData" [value]="car.name">{{car.name}}
+                                        </ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> First Name </small>
+                                        <div *ngIf="isSubmitted && formControls1.first_name.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.first_name.errors.required">
+                                                Please Enter FirstName!</div>
+                                            <div *ngIf="formControls1.first_name.errors.pattern">
+                                                Please Enter Correct Name!</div>
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="First Name" formControlName="first_name"
+                                        class="form_control">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Last Name </small>
+                                        <div *ngIf="isSubmitted && formControls1.last_name.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.last_name.errors.required">
+                                                Please Enter Last name!</div>
+                                            <div *ngIf="formControls1.last_name.errors.pattern">
+                                                Please Enter Last Name!</div>
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="Last Name" formControlName="last_name"
+                                        class="form_control">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Gender </small>
+                                        <div *ngIf="isSubmitted && formControls1.gender.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.gender.errors.required">
+                                                Please Select Gender!</div>
+
+                                        </div>
+                                    </label>
+
+
+                                    <ng-select formControlName="gender"
+                                        class="form_control moter_custom_select cs_custom_drop">
+                                        <ng-option *ngFor="let car of GenderData" [value]="car.name">{{car.name}}
+                                        </ng-option>
+                                    </ng-select>
+
+                                    <!-- <ng-multiselect-dropdown class="form-control" name="gender"
+                                        placeholder="Select Gender" [data]="GenderData" [(ngModel)]="SelectedGender"
+                                        formControlName="gender" [settings]="dropdownSettingsingleselect">
+                                    </ng-multiselect-dropdown> -->
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Marital status</small>
+                                        <div *ngIf="isSubmitted && formControls1.marital_status.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.marital_status.errors.required">
+                                                Please Select Marital status!</div>
+                                        </div>
+                                    </label>
+
+
+                                    <ng-select formControlName="marital_status"
+                                        class="form_control moter_custom_select cs_custom_drop">
+                                        <ng-option *ngFor="let car of MaritalStatus" [value]="car.name">{{car.name}}
+                                        </ng-option>
+                                    </ng-select>
+
+
+                                    <!-- <ng-multiselect-dropdown class="form-control" name="marital_status"
+                                        placeholder="Select Marital Status" [data]="MaritalStatus"
+                                        [(ngModel)]="SelectedMaritalStatus" formControlName="marital_status"
+                                        [settings]="dropdownSettingsingleselect">
+                                    </ng-multiselect-dropdown> -->
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> DOB </small>
+                                        <div *ngIf="isSubmitted && formControls1.dob.errors " class="ValidationError">
+                                            <div *ngIf="formControls1.dob.errors.required">
+                                                Please Select DOB!</div>
+                                        </div>
+                                    </label>
+                                    <input type="date" placeholder="DOB" formControlName="dob" class="form_control"
+                                        max="{{this.maxDatemaxDate}}" required>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Mobile Number </small>
+                                        <div *ngIf="isSubmitted && formControls1.mobile_proposal.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.mobile_proposal.errors.required">
+                                                Please Enter Mobile!</div>
+                                            <div *ngIf="formControls1.mobile_proposal.errors.pattern">
+                                                Please Enter Correct Mobile!</div>
+                                            <div *ngIf="formControls1.mobile_proposal.errors.maxlength">
+                                                Please Enter max length!</div>
+                                            <div *ngIf="formControls1.mobile_proposal.errors.minlength">
+                                                Please Enter min length!</div>
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="Mobile Number" formControlName="mobile_proposal"
+                                        minlength='10' maxlength="10" class="form_control">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> E-Mail</small>
+                                        <div *ngIf="isSubmitted && formControls1.email_proposal.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.email_proposal.errors.required">
+                                                Please Enter Email!</div>
+                                            <div *ngIf="formControls1.email_proposal.errors.pattern">
+                                                Please Enter Correct Email!</div>
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="E-Mail" formControlName="email_proposal"
+                                        class="form_control">
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> House/Street Number</small>
+                                        <div *ngIf="isSubmitted && formControls1.address1.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.address1.errors.required">
+                                                Please Enter House-Street!</div>
+
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="House/Street Number" formControlName="address1"
+                                        maxlength="10" class="form_control">
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Address2</small>
+                                        <div *ngIf="isSubmitted && formControls1.address2.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.address2.errors.required">
+                                                Please Enter Address2!</div>
+                                            <div *ngIf="formControls1.address2.errors.pattern">
+                                                Please Enter Correct Address2!</div>
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="Address2" formControlName="address2" maxlength="30"
+                                        class="form_control">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Address3 </small>
+                                        <div *ngIf="isSubmitted && formControls1.address3.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.address3.errors.required">
+                                                Please Enter Address3!</div>
+                                            <div *ngIf="formControls1.address3.errors.pattern">
+                                                Please Enter Correct Address3!</div>
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="Address3" formControlName="address3" maxlength="50"
+                                        class="form_control">
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10">Pincode</small>
+                                        <div *ngIf="isSubmitted && formControls1.pincode.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls1.pincode.errors.required">
+                                                Please Enter Pincode!</div>
+                                            <div *ngIf="formControls1.pincode.errors.pattern">
+                                                Please Enter Correct Pincode!</div>
+                                        </div>
+                                    </label>
+
+
+                                    <ng-select formControlName="pincode" (change)="SelectedPincodeGetStateCity()" (keyup)="PurposalPincode($event)"
+                                        class="form_control moter_custom_select cs_custom_drop">
+                                        <ng-option *ngFor="let car of PincodeData" [value]="car.code">{{car.name}}
+                                        </ng-option>
+                                    </ng-select>
+
+
+
+                                    <!-- <input type="hidden" (keyup)="PurposalPincode($event)" formControlName="pincode"
+                                        class="form_control" maxlength="6" minlength="6" [(ngModel)]="Pin">
+
+                                    <input type="text" placeholder="pincode" id="pincodeVal"
+                                        (keyup)="PurposalPincode($event)" class="form_control" maxlength="6"
+                                        minlength="6">
+
+
+                                    <div class="cs_custom_drop" *ngIf="PincodeData?.length != 0">
+                                        <p *ngFor="let row of PincodeData"
+                                            (click)="SetFormcontrolvalue('pincode',row.code,'1')"> {{row.code}}</p>
+                                    </div> -->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Pincode</small></label>
+                                    <ng-multiselect-dropdown class="form-control" name="pincode"
+                                        placeholder="Select Pincode" [data]="PincodeData" formControlName="pincode"
+                                        (onSelect)="onItemSelect($event,'Pincode')"
+                                        (onDeSelect)="onItemDeSelect($event,'Pincode')" [(ngModel)]="SelectedPincode"
+                                        (keyup)="PurposalPincode($event)" [settings]="dropdownSettingsingleselect">
+                                    </ng-multiselect-dropdown>
+
+                                    <div *ngIf="isSubmitted && formControls1.pincode.errors " class="ValidationError">
+                                        <div *ngIf="formControls1.pincode.errors.required">
+                                            Please Enter Pincode!</div>
+                                        <div *ngIf="formControls1.pincode.errors.pattern">
+                                            Please Enter Correct Pincode!</div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> State</small>
+                                        <div *ngIf="isSubmitted && formControls1.state.errors " class="ValidationError">
+                                            <div *ngIf="formControls1.state.errors.required">
+                                                Please Enter State!</div>
+                                            <div *ngIf="formControls1.state.errors.pattern">
+                                                Please Enter Correct State!</div>
+                                        </div>
+                                    </label>
+                                    <input id="voluntary_excess_value" formControlName="state" class="form_control"
+                                        readonly>
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> City</small>
+                                        <div *ngIf="isSubmitted && formControls1.city.errors " class="ValidationError">
+                                            <div *ngIf="formControls1.city.errors.required">
+                                                Please Enter City!</div>
+                                            <div *ngIf="formControls1.city.errors.pattern">
+                                                Please Enter Correct City!</div>
+                                        </div>
+                                    </label>
+                                    <input id="voluntary_excess_value" formControlName="city" class="form_control"
+                                        readonly>
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> PAN</small>
+                                        <div *ngIf="isSubmitted && formControls1.pan_no.errors " class="ValidationError">
+                                            <div *ngIf="formControls1.pan_no.errors.required">
+                                                Please Enter PAN No.!</div>
+                                            <div *ngIf="formControls1.pan_no.errors.pattern">
+                                                Please Enter Correct PAN No.!</div>
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="PAN No." formControlName="pan_no" maxlength="10"
+                                        minlength="5" class="form_control">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> GST No.</small>
+                                        <div *ngIf="isSubmitted && formControls1.gst_no.errors " class="ValidationError">
+                                            <div *ngIf="formControls1.gst_no.errors.required">
+                                                Please Enter GST No!</div>
+                                            <div *ngIf="formControls1.gst_no.errors.pattern">
+                                                Please Enter Valid GST No!</div>
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="GST No." formControlName="gst_no" minlength="5"
+                                        maxlength="15" class="form_control">
+                                </div>
+
+                            </div>
+
+
+
+
+
+                            <!-- 
+                            <div class="col-md-12 mb_15">
+                                <div class="fs_18 text_red fw_600 mt_15">
+                                    <div class="custom_checkbox">
+                                        <input type="checkbox" value="1" formControlName="kyc_doc" id="kyc_doc">
+                                        <label for="kyc_doc"></small></label>
+                                    </div>
+                                    <span>Upload KYC Documents</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 kyc_document" *ngIf="Owner_Details_Form.value['kyc_doc'] == '1'">
+                                <div class="row mx_0">
+                                    <div class="col-md-4 col-sm-6 col-12">
+                                        <div class="form_group d_flex flex-column w_100">
+                                            <label class="d_flex"><small class="mr_10"> Pan Card Document</small></label>
+                                            <input type="file" (change)="UploadDocs($event,'Pan_Card_Document')"
+                                                placeholder="Pan Card Document" class="form_control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-12">
+                                        <div class="form_group d_flex flex-column w_100">
+                                            <label class="d_flex"><small class="mr_10"> Cancel Cheque</small></label>
+                                            <input type="file" (change)="UploadDocs($event,'Cancel_Cheque')"
+                                                placeholder="Cancel Cheque" class="form_control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-12">
+                                        <div class="form_group d_flex flex-column w_100">
+                                            <label class="d_flex"><small class="mr_10"> Adahar Front Image</small></label>
+                                            <input type="file" (change)="UploadDocs($event,'Aadhar_card_Front')"
+                                                placeholder="Aadhar Front Image" class="form_control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-12">
+                                        <div class="form_group d_flex flex-column w_100">
+                                            <label class="d_flex"><small class="mr_10"> Adahar Back Image</small></label>
+                                            <input type="file" (change)="UploadDocs($event,'Aadhar_card_Back')"
+                                                placeholder="Aadhar Back Image" class="form_control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-12">
+                                        <div class="form_group d_flex flex-column w_100">
+                                            <label class="d_flex"><small class="mr_10"> Electricity Bill</small></label>
+                                            <input type="file" (change)="UploadDocs($event,'Electricity_Bill')"
+                                                placeholder="Electricity Bill" class="form_control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-12">
+                                        <div class="form_group d_flex flex-column w_100">
+                                            <label class="d_flex"><small class="mr_10"> Org. Reg Certificate</small></label>
+                                            <input type="file" (change)="UploadDocs($event,'Reg_Certificate')"
+                                                placeholder="Org. Reg Certificate" class="form_control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-12">
+                                        <div class="form_group d_flex flex-column w_100">
+                                            <label class="d_flex"><small class="mr_10"> Photo(Passport Size)</small></label>
+                                            <input type="file" (change)="UploadDocs($event,'Photo')"
+                                                placeholder="Photo(Passport Size)" class="form_control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form_group d_flex flex_Start flex_Middel">
+                                            <button type="button"
+                                                class="background_red text_white border_none px_10 py_5 border_red30px">Upload
+                                                All</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="col-md-12">
+                                <div class="form_group d_flex flex_Equal flex_Middel">
+
+                                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer"
+                                        (click)="BackForm(1)"><i class="fas fa-angle-left mr_10"></i> Back</a>
+
+
+                                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer"
+                                        (click)="AddForm(1)">Continue
+                                        <i class="fas fa-angle-right"></i></a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div
+                                class="d_flex flex_Equal flex_Middel cursor_pointer fs_16 fw_600 background_red border_red5px px_10 py_5 text_white mb_15">
+                                <span><i class="fa-solid fa-car mr_10"></i>Vehicle Details</span><span
+                                    class="edit_icon"><i class="fa-solid fa-pen-to-square"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="form" [formGroup]="Vehicle_Details_Form">
+
+                        <div class="row mb_15 mx_0 Proposal_page_body"
+                            [ngClass]="(this.ShowForm == 2 ? 'Proposal_page_active' : 'else' )">
+                            <!-- <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Registration Number</small></label>
+                                    <div class="d_flex flex_Equal flex_Middel">
+
+                                        <input type="text" placeholder="XX" maxlength="2"
+                                            formControlName="Registration_State_Code" class="form_control">
+                                        <input type="number" placeholder="XX" maxlength="2"
+                                            formControlName="Registration_District_Code"
+                                            class="form_control appearance_none">
+                                        <input type="text" placeholder="XX" maxlength="2"
+                                            formControlName="Registration_City_Code"
+                                            class="form_control appearance_none">
+                                        <input type="number" placeholder="0000" maxlength="4"
+                                            formControlName="Registration_Code" class="form_control appearance_none">
+                                    </div>
+                                </div>
+                            </div> -->
+
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> RTO Location</small>
+                                        <div *ngIf="isSubmitted && formControls2.rto_location.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls2.rto_location.errors.required">
+                                                Please Select RTO!</div>
+
+                                        </div>
+                                    </label>
+                                    <!-- <select id="voluntary_excess_value" formControlName="rto_location"
+                                        class="form_control moter_custom_select">
+                                        <option value="0">Select RTO Location</option>
+                                        <option value="1">RJ-45 - Vidhyadhar Nagar,</option>
+                                    </select> -->
+
+                                    <ng-select formControlName="rto_location"
+                                        class="form_control moter_custom_select cs_custom_drop">
+                                        <ng-option *ngFor="let car of RtoLocationData" [value]="car.code">{{car.name}}
+                                        </ng-option>
+                                    </ng-select>
+
+                                    <!-- <ng-multiselect-dropdown class="form-control" name="rto_location"
+                                        placeholder="Select RTO" [data]="RtoLocationData" formControlName="rto_location"
+                                        [(ngModel)]="SelectedRto" [settings]="dropdownSettingsingleselect">
+                                    </ng-multiselect-dropdown>
+
+ -->
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Engine Number *</small>
+                                        <div *ngIf="isSubmitted && formControls2.engine_no.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls2.engine_no.errors.required">
+                                                Please Enter Engine Number!</div>
+                                            <div *ngIf="formControls2.engine_no.errors.pattern">
+                                                Enter valid Chassis Number!</div>
+                                            <div *ngIf="formControls2.engine_no.errors.maxlength">
+                                                Max Engine Number!</div>
+                                            <div *ngIf="formControls2.engine_no.errors.minlength">
+                                                Min Engine Number!</div>
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="EX. AB9321" formControlName="engine_no"
+                                        maxlength="20" minlength="6" class="form_control">
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Chassis Number *</small>
+                                        <div *ngIf="isSubmitted && formControls2.chassies_no.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls2.chassies_no.errors.required">
+                                                Please Enter Chassis Number!</div>
+                                            <div *ngIf="formControls2.chassies_no.errors.pattern">
+                                                Enter valid Chassis Number!</div>
+
+                                            <div *ngIf="formControls2.chassies_no.errors.maxlength">
+                                                Max Chassis Number!</div>
+                                            <div *ngIf="formControls2.chassies_no.errors.minlength">
+                                                Min Chassis Number!</div>
+
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="Chassis Number" formControlName="chassies_no"
+                                        maxlength="20" minlength="6" class="form_control">
+
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb_15">
+                                <div class="row">
+                                    <div class="col-md-12 mb_15">
+                                        <div class="fs_18 text_red fw_600 mt_15">
+                                            <div class="custom_checkbox">
+                                                <input type="checkbox" (click)="Hypothecation($event)" value="1" formControlName="hypothecation"
+                                                    id="Hypothecation">
+                                                <label for="Hypothecation"></label>
+                                            </div>
+                                            <span> &nbsp;&nbsp; Hypothecation?</span>
+                                            <div *ngIf="isSubmitted && formControls2.hypothecation.errors "
+                                                class="ValidationError">
+                                                <div *ngIf="formControls2.hypothecation.errors.required">
+                                                    Please Select Hypothecation!</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 Hypothecation"
+                                        *ngIf="Vehicle_Details_Form.value['hypothecation'] == true || Vehicle_Details_Form.value['hypothecation'] == 1">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-12">
+                                                <div class="form_group">
+                                                    <label class="d_flex"><small class="mr_10"> Financier
+                                                            Name</small></label>
+                                                    <!-- <ng-multiselect-dropdown class="form-control" name="financier_name"
+                                                        placeholder="Select Financier Name" [data]="FinanciarNameData"
+                                                        (keyup)="GetFinancierInsurerName($event)"
+                                                        formControlName="financier_name"
+                                                        [(ngModel)]="SelectedFinancierName"
+                                                        [settings]="dropdownSettingsingleselect">
+                                                    </ng-multiselect-dropdown> -->
+
+
+                                                    <ng-select (keyup)="GetFinancierInsurerName($event)"
+                                                        formControlName="financier_name"
+                                                        class="form_control moter_custom_select cs_custom_drop">
+                                                        <ng-option *ngFor="let car of FinanciarNameData"
+                                                            [value]="car.name">{{car.name}}</ng-option>
+                                                    </ng-select>
+
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-12">
+                                                <div class="form_group">
+                                                    <label class="d_flex"><small class="mr_10"> Financier
+                                                            City</small></label>
+
+
+                                                    <!-- <ng-multiselect-dropdown class="form-control" name="financier_city"
+                                                        placeholder="Select Financier City" [data]="FinanciarCityData"
+                                                        formControlName="financier_city"
+                                                        [(ngModel)]="SelectedFinancierCity"
+                                                        (keyup)="GetFinancierInsurerCity($event)"
+                                                        [settings]="dropdownSettingsingleselect">
+                                                    </ng-multiselect-dropdown> -->
+
+                                                    <ng-select (keyup)="GetFinancierInsurerCity($event)"
+                                                        formControlName="financier_city"
+                                                        class="form_control moter_custom_select cs_custom_drop">
+                                                        <ng-option *ngFor="let car of FinanciarCityData"
+                                                            [value]="car.name">{{car.name}}</ng-option>
+                                                    </ng-select>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form_group d_flex flex_Equal flex_Middel">
+
+                                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer"
+                                        (click)="BackForm(2)"><i class="fas fa-angle-left mr_10"></i> Back</a>
+
+                                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer"
+                                        (click)="AddForm(2)">Continue <i class="fas fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div
+                                class="d_flex flex_Equal flex_Middel cursor_pointer fs_16 fw_600 background_red border_red5px px_10 py_5 text_white mb_15">
+                                <span><i class="fa-solid fa-user-plus mr_10"></i>Nominee Details</span><span
+                                    class="edit_icon"><i class="fa-solid fa-pen-to-square"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="form" [formGroup]="Nominee_Details_Form">
+
+                        <div class="row mb_15 mx_0 Proposal_page_body"
+                            [ngClass]="(this.ShowForm == 3 ? 'Proposal_page_active' : 'else' )">
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Nominee Full Name</small>
+                                        <div *ngIf="isSubmitted && formControls3.nominee_name.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls3.nominee_name.errors.required">
+                                                Please Enter Nominee Full Name!</div>
+
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="Nominee Full Name" formControlName="nominee_name"
+                                        class="form_control">
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Gender</small>
+                                        <div *ngIf="isSubmitted && formControls3.nominee_gender.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls3.nominee_gender.errors.required">
+                                                Please Select Nominee Gender!</div>
+
+                                        </div>
+                                    </label>
+
+                                    <!-- <ng-multiselect-dropdown class="form-control" name="nominee_gender"
+                                        placeholder="Select Nominee Gender" [data]="GenderData"
+                                        [(ngModel)]="SelectedNomineeGender" formControlName="nominee_gender"
+                                        [settings]="dropdownSettingsingleselect">
+                                    </ng-multiselect-dropdown> -->
+
+
+                                    <ng-select formControlName="nominee_gender"
+                                        class="form_control moter_custom_select cs_custom_drop">
+                                        <ng-option *ngFor="let car of GenderData" [value]="car.name">{{car.name}}
+                                        </ng-option>
+                                    </ng-select>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Date Of Birth</small></label>
+                                    <input type="date" placeholder="DOB" formControlName="nominee_dob"
+                                        max="{{this.maxDatemaxDate}}" class="form_control ">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Select Relationship *</small>
+                                        <div *ngIf="isSubmitted && formControls3.nominee_relation.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls3.nominee_relation.errors.required">
+                                                Please Enter Nominee Relationship!</div>
+
+                                        </div>
+                                    </label>
+
+                                    <!-- <ng-multiselect-dropdown class="form-control" name="Nominee_Relationship"
+                                        placeholder="Select Nominee Relationship" [data]="NomineeRelationData"
+                                        [(ngModel)]="SelectedNomineeReleation" formControlName="nominee_relation"
+                                        [settings]="dropdownSettingsingleselect">
+                                    </ng-multiselect-dropdown>
+
+                                     -->
+                                    <ng-select formControlName="nominee_relation"
+                                        class="form_control moter_custom_select cs_custom_drop">
+                                        <ng-option *ngFor="let car of NomineeRelationData" [value]="car.name">
+                                            {{car.name}}</ng-option>
+                                    </ng-select>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form_group d_flex flex_Equal flex_Middel">
+
+                                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer"
+                                        (click)="BackForm(3)"><i class="fas fa-angle-left mr_10"></i> Back</a>
+
+                                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer"
+                                        (click)="AddForm(3)">Continue
+                                        <i class="fas fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div
+                                class="d_flex flex_Equal flex_Middel cursor_pointer fs_16 fw_600 background_red border_red5px px_10 py_5 text_white mb_15">
+                                <span><i class="fa-solid fa-book mr_10"></i>Last Policy Details</span><span
+                                    class="edit_icon"><i class="fa-solid fa-pen-to-square"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="form" [formGroup]="Last_Policy_Details">
+
+                        <div class="row mb_15 mx_0 Proposal_page_body"
+                            [ngClass]="(this.ShowForm == 4 ? 'Proposal_page_active' : 'else' )">
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Previous Policy Number *</small>
+                                        <div *ngIf="isSubmitted && formControls4.previous_policy_number.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls4.previous_policy_number.errors.required">
+                                                Please Enter Previous Policy Number!</div>
+
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="Previous Policy Number"
+                                        formControlName="previous_policy_number" class="form_control">
+
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Previous policy Company Name</small>
+                                        <div *ngIf="isSubmitted && formControls4.Previous_Policy_Company_Name.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls4.Previous_Policy_Company_Name.errors.required">
+                                                Please Select Previous Policy Company Name!</div>
+
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="Previous policy Company Name" readonly
+                                        formControlName="Previous_Policy_Company_Name" class="form_control">
+
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> End Date Of Policy</small>
+                                        <div *ngIf="isSubmitted && formControls4.End_Date_Of_Policy.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls4.End_Date_Of_Policy.errors.required">
+                                                Please Select End_Date_Of_Policy!</div>
+
+                                        </div>
+                                    </label>
+                                    <input type="text" placeholder="End Date Of Policy" readonly
+                                        formControlName="End_Date_Of_Policy" class="form_control  ">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="form_group">
+                                    <label class="d_flex"><small class="mr_10"> Previous Insurance Claimed</small>
+                                        <div *ngIf="isSubmitted && formControls4.Previous_Insurance_Claimed.errors "
+                                            class="ValidationError">
+                                            <div *ngIf="formControls4.Previous_Insurance_Claimed.errors.required">
+                                                Please Select Previous Insurance Claimed!</div>
+
+                                        </div>
+                                    </label>
+
+                                    <input type="text" placeholder="Previous Insurance Claimed" readonly
+                                        formControlName="Previous_Insurance_Claimed" class="form_control">
+
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form_group d_flex flex_Equal flex_Middel">
+
+                                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer"
+                                        (click)="BackForm(4)"><i class="fas fa-angle-left mr_10"></i> Back</a>
+
+                                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer"
+                                        (click)="SubmitForm()">Submit
+                                        <i class="fas fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+
+
+            </div>
+            <div class="col-md-4">
+                <div class="main_card border_red5px mb_25">
+                    <div class="main_card_body border_bottom1">
+                        <div class="fs_18 text_red fw_800 text_center">
+                            <span *ngIf="QuoteDetails['gadi_type'] == 2">PRIVATE CAR INSURANCE</span>
+                            <span *ngIf="QuoteDetails['gadi_type'] == 1">Two Wheeler INSURANCE</span>
+                            <span *ngIf="QuoteDetails['gadi_type'] == 5">MISC-D INSURANCE</span>
+                            <span *ngIf="QuoteDetails['gadi_type'] == 3">PCV INSURANCE</span>
+                            <span *ngIf="QuoteDetails['gadi_type'] == 4">GCV INSURANCE</span>
+                        </div>
+                        <div class="fs_15 text_dark fw_600 text_center mt_7">{{QuoteDetails['quotation_id']}} </div>
+                        <div class="d_flex flex_Equal flex_Middel mt_15">
+                            <div><img src="{{ImageCompanyLogo}}" alt="{{CompanyName}}" class="img_width"></div>
+                            <div class="fs_15 text_dark fw_800 text_center mt_7"><i
+                                    class="fa-solid fa-indian-rupee-sign mr_10"></i> {{QuoteDetails['premium']}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_card_body">
+
+                        <div class="d_flex flex_Equal flex_Middel border_bottom1 pb_10">
+                            <div class="fs_15 text_dark fw_600 text_center">Registration Number :</div>
+                            <div class="fs_15 text_dark fw_800 text_center">{{QuoteDetails['registration_no']}}</div>
+                        </div>
+
+                        <div class="d_flex flex_Equal flex_Middel border_bottom1 pb_10">
+                            <div class="fs_15 text_dark fw_600 text_center">Vehicle Make :</div>
+                            <div class="fs_15 text_dark fw_800 text_center">{{QuoteDetails['make']}}</div>
+                        </div>
+                        <div class="d_flex flex_Equal flex_Middel mt_7 border_bottom1 pb_10">
+                            <div class="fs_15 text_dark fw_600 text_center">Varient :</div>
+                            <div class="fs_15 text_dark fw_800 text_center">{{QuoteDetails['variant']}}</div>
+                        </div>
+                        <div *ngIf="QuoteDetails['tp_only'] != '1'"
+                            class="d_flex flex_Equal flex_Middel mt_7 border_bottom1 pb_10">
+                            <div class="fs_15 text_dark fw_600 text_center">IDV :</div>
+                            <div class="fs_15 text_dark fw_800 text_center">{{QuoteDetails['idv']}}</div>
+                        </div>
+                        <!-- <div class="d_flex flex_Equal flex_Middel mt_7 border_bottom1 pb_10">
+                            <div class="fs_15 text_dark fw_600 text_center">Cover for :</div>
+                            <div class="fs_15 text_dark fw_800 text_center">{{QuoteDetails['variant']}}</div>
+                        </div> -->
+                        <div class="d_flex flex_Equal flex_Middel mt_7 border_bottom1 pb_10">
+                            <div class="fs_15 text_dark fw_600 text_center">Start Date :</div>
+                            <div class="fs_15 text_dark fw_800 text_center">{{QuoteDetails['policy_start_date']}}</div>
+                        </div>
+                        <div class="d_flex flex_Equal flex_Middel mt_7 border_bottom1 pb_10">
+                            <div class="fs_15 text_dark fw_600 text_center">End Date :</div>
+                            <div class="fs_15 text_dark fw_800 text_center">{{QuoteDetails['policy_end_date']}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

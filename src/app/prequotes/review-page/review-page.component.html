@@ -1,0 +1,293 @@
+<section class="review_page_css mt_40 mb_15">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="main_card">
+                    <div class="main_card_body">
+                        <div class="d_flex flex_Equal flex_Middel pb_15 border_bottom1 mb_15 flex_wrap">
+                            <div>
+                                <img src="{{logo}}" alt="company logo">
+                            </div>
+                            <div>
+                                <div class="fs_18 text_red fw_600" >
+                                    <span *ngIf="dataArValue.details.gadi_type == 2">Private Car</span>
+                                    <span *ngIf="dataArValue.details.gadi_type == 1">Two wheeler</span>
+                                      <span
+                                        class="fs_14 fw_500 d_block text_dark">Quotation ID: {{dataArValue.details.quotation_id}}</span>
+                                </div>
+                                <span class="fs_18 text_red fw_700 d_block mt_15 text_right"><i
+                                        class="fa-solid fa-indian-rupee-sign mr_10"></i> {{dataArValue.details.premium}}</span>
+                            </div>
+                        </div>
+                        <div class="cs_accroding">
+
+
+                            
+                                <!-- <div
+                                    class="fs_18 text_red fw_600 border_bottom1 pb_10 pt_10 d_flex flex_Equal flex_Middel cursor_pointer cover_row_btn">
+                                    <small>Insured Member Details</small> <span class="change_icon"><i
+                                            class="fa-solid fa-chevron-down"></i></span></div> -->
+                                <div class="P_15">
+                                    
+                                    <ul class="cs_card_list">
+                                        <li>
+                                            <span> Quotation Number :</span>
+                                            <label> {{dataArValue.details.quotation_id}}</label>
+                                        </li>
+                                        <li *ngIf="dataArValue.details.tp_only != 1">
+                                            <span> IDV : </span>
+                                            <label>{{dataArValue.details.idv}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Net Premium : </span>
+                                            <label>{{dataArValue.details.net_premium}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Service Tax : </span>
+                                            <label>{{dataArValue.details.tax}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Final Premium : </span>
+                                            <label>{{dataArValue.details.premium}}</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            
+                            <div class="cs_item">
+                                <div (click)="ShowHideFunction(1)"
+                                    class="fs_18 text_red fw_600 border_bottom1 pb_10 pt_10 d_flex flex_Equal flex_Middel cursor_pointer cover_row_btn">
+                                    <small>Policy holder {{dataArValue.user_details.first_name}} {{dataArValue.user_details.last_name}}</small> <span class="change_icon"><i
+                                            class="fa-solid fa-chevron-down"></i></span></div>
+                                <div class="P_15"  *ngIf="Section == 1">
+                                    
+                                    <ul class="cs_card_list">
+                                        <li>
+                                            <span> Name :</span>
+                                            <label>{{dataArValue.user_details.first_name}} {{dataArValue.user_details.last_name}}</label>
+                                        </li>
+                                        <li *ngIf="dataArValue.details.tp_only != 1">
+                                            <span> BirthDate : </span>
+                                            <label>{{dataArValue.user_details.dob}}</label>
+                                        </li>
+                                        <li>
+                                            <span>Contact Number : </span>
+                                            <label>{{dataArValue.user_details.mobile_proposal}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Email Address : </span>
+                                            <label>{{dataArValue.user_details.email_proposal}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Address : </span>
+                                            <label>{{dataArValue.user_details.address1}} {{dataArValue.user_details.address2}} {{dataArValue.user_details.address3}}</label>
+                                        </li>
+                                        <li>
+                                            <span> State : </span>
+                                            <label>{{dataArValue.user_details.state}}</label>
+                                        </li>
+                                        <li>
+                                            <span> City : </span>
+                                            <label>{{dataArValue.user_details.city}}</label>
+                                        </li>
+                                        <li>
+                                            <span>Pincode : </span>
+                                            <label>{{dataArValue.user_details.pincode}}</label>
+                                        </li>
+                                        <li *ngIf="dataArValue.user_details.gst_no != '' || dataArValue.user_details.gst_no != null">
+                                            <span>Gst No : </span>
+                                            <label>{{dataArValue.user_details.gst_no}}</label>
+                                        </li>
+                                        <li *ngIf="dataArValue.user_details.pan_no != '' || dataArValue.user_details.pan_no != null">
+                                            <span>Pan No : </span>
+                                            <label>{{dataArValue.user_details.pan_no}}</label>
+                                        </li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                            <div class="cs_item" *ngIf="dataArValue.user_details.nominee_name != ''">
+                                <div (click)="ShowHideFunction(2)"
+                                    class="fs_18 text_red fw_600 border_bottom1 pb_10 pt_10 d_flex flex_Equal flex_Middel cursor_pointer cover_row_btn">
+                                    <small>Nominee Details {{dataArValue.user_details.nominee_name}}</small> <span class="change_icon"><i
+                                            class="fa-solid fa-chevron-down"></i></span></div>
+                                <div class="P_15" *ngIf="Section == 2">
+                                    <ul class="cs_card_list">
+                                        <li>
+                                            <span> Name :</span>
+                                            <label> {{dataArValue.user_details.nominee_name}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Gender : </span>
+                                            <label> {{dataArValue.user_details.nominee_gender}}</label>
+                                        </li>
+                                        <li>
+                                            <span> BirthDate : </span>
+                                            <label>{{dataArValue.user_details.nominee_dob}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Relation : </span>
+                                            <label>{{dataArValue.user_details.nominee_relation}}</label>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="cs_item">
+                                <div (click)="ShowHideFunction(3)"
+                                    class="fs_18 text_red fw_600 border_bottom1 pb_10 pt_10 d_flex flex_Equal flex_Middel cursor_pointer cover_row_btn">
+                                    <small> Vehicle details {{dataArValue.details.make}} {{dataArValue.details.model}} {{dataArValue.details.variant}} {{dataArValue.details.fuel_type}}</small> <span class="change_icon"><i
+                                            class="fa-solid fa-chevron-down"></i></span></div>
+                                <div class="P_15" *ngIf="Section == 3">
+                                    <ul class="cs_card_list">
+                                        <li>
+                                            <span> Vehicle Model :</span>
+                                            <label> {{dataArValue.details.make}} {{dataArValue.details.model}} {{dataArValue.details.variant}} {{dataArValue.details.fuel_type}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Registration Number : </span>
+                                            <label> {{dataArValue.details.registration_no}} </label>
+                                        </li>
+                                        <li>
+                                            <span> Registration Date : </span>
+                                            <label>{{dataArValue.details.registration_date}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Customer Type : </span>
+                                            <label>{{dataArValue.details.vehicle_owned_by}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Engine Number : </span>
+                                            <label>{{dataArValue.user_details.engine_no}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Chassis Number : </span>
+                                            <label>{{dataArValue.user_details.chassies_no}}</label>
+                                        </li>
+                                        <li>
+                                            <span> Hypothecation : </span>
+                                            <label  *ngIf="dataArValue.user_details.hypothecation ==0">NO</label>
+                                            <label *ngIf="dataArValue.user_details.hypothecation ==1">YES</label>
+                                        </li>
+                                        <li *ngIf="dataArValue.user_details.hypothecation ==1">
+                                            <span> Financier Name : </span>
+                                            <label>{{dataArValue.user_details.financier_name}}</label>
+                                        </li>
+                                        <li *ngIf="dataArValue.user_details.hypothecation ==1">
+                                            <span>  Financier City : </span>
+                                            <label>{{dataArValue.user_details.financier_city}}</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form_group d_flex flex_End flex_Middel">
+                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer"  (click)="backButton(dataArValue.details.company,dataArValue.details.quotation_id)"  > <i  class="fas fa-angle-left mr_10"></i> Back</a>
+                </div>
+                <div class="row mx_0">
+                    <div class="col-md-12">
+                        <div class="fs_18 text_red fw_600 border_bottom1 pb_10 mb_15">Document Uploads</div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form_group d_flex flex-column w_100">
+                            <label>Pan Card Document</label>
+                            <input type="file" placeholder="Pan Card Document" class="form_control">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form_group d_flex flex-column w_100">
+                            <label>Adahar Front Image</label>
+                            <input type="file" placeholder="Adahar Front Image" class="form_control">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form_group d_flex flex-column w_100">
+                            <label>Adahar Back Image</label>
+                            <input type="file" placeholder="Adahar Back Image" class="form_control">
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="form_group d_flex flex_End flex_Middel">
+                    <a class="background_red text_white border_none px_10 py_5 border_red30px next cursor_pointer" (click)="GetProposalApi()"> Proceed to pay <i
+                        class="fas fa-angle-right mr_10"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main_popup" id="review_modal">
+        <div class="main_popup_overlay2 edit_vehical_details"></div>
+        <div class="main_popup_wrapper main_popup_transition main_popup_animation" style="max-height: 295px;">
+            <div class="main_popup_header">
+                <div class="main_popup_close_btn edit_vehical_details" (click)="ShowEditClose()"><i
+                    class="fa-solid fa-xmark"></i></div>
+              
+            </div>
+            <div class="main_popup_body">
+                <div class="d_flex flex_column flex_Middel pop_content">
+                    <form class="ngSubmit" [formGroup]="CheckedValidation"  >
+                       
+                       
+    
+                        <div class="logo_popup w_100">
+                           
+                            <div class="d_flex flex_Equal flex_Middel">
+                                <div class="form_group pr_15">
+                                    <img src="{{logo}}" alt="company logo">
+                                </div>
+                                <div class="form_group">
+                                   <li>Quotation Id : SQTW2022102809360460799</li>
+                                   <li>Final Premium : {{dataArValue.details.premium}}</li>
+                                   <li>Policy Start Date : {{dataArValue.details.policy_start_date}}</li>
+                                   <li>Policy End Date : {{dataArValue.details.policy_end_date}}</li>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="d_flex flex_Equal flex_Middel">
+                            <label>
+
+                                <input type="checkbox" required formControlName="declaration" id="declaration"> &nbsp; I hereby declare that all the
+                                information given above is true and accept  <a data-toggle="modal" data-target="#myModaltearm" style="color:blue">terms and
+                                    conditions</a>
+                               
+                                <div *ngIf="isSubmitted && formControls1.declaration.errors " class="ValidationError">
+                                    <div *ngIf="formControls1.declaration.errors.required">
+                                        Declaration Must Be Checked !</div>
+
+                                </div>
+                        </label>
+                        </div>
+                        <div class="d_flex flex_Equal flex_Middel" *ngIf="ApiResponse.msg =='Success'" >
+                            <!-- {{ApiResponse.URL}} -->
+                            <div class="form_group pr_15">
+                                <button type="button" class="next-button link_btn w_50 border_red30px text_center mb_10 d_block"
+                                style="line-height: 18px;" (click)="ShowEditClose()">Cancel</button>
+                            </div>
+                            <div class="form_group">
+                                <button type="button" class="next-button link_btn w_50 border_red30px text_center mb_10 d_block"
+                                style="line-height: 18px; width: 125px; float: right;" (click)="UpdateData(ApiResponse.URL)">Proceed to pay</button>
+                            </div>
+                        </div>
+                        <div class="d_flex flex_Equal flex_Middel" *ngIf="ApiResponse.msg !='Success'" >
+                             <div class="form_group pr_15 alert alert-danger">
+                            <p>{{ApiResponse.msg}}</p>
+                            </div>
+                            
+                        </div>
+ 
+                    </form>
+                </div>
+            </div>
+            <div class="main_popup_footer d_none"></div>
+        </div>
+    </div>
+
+</section>
